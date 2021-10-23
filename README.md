@@ -1,4 +1,4 @@
-# Airline Reservation Application - Team 10
+# Spartans Airlines - Team 10
 
 # Team Members:
 Divya Mohan <br>
