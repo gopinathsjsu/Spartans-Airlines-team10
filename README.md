@@ -11,7 +11,9 @@ Frontend - ReactJS, Redux  <br>
 Backend - ExpressJS <br>
 Database - MongoDB <br>
 
-# Architecture Diagram:
+# Scrum Meeting Schedule:
+Wednesday  <br>
+Friday
 
 
 
