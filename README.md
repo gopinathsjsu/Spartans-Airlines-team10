@@ -10,10 +10,17 @@ Shravan Vallaban <br>
 Frontend - ReactJS, Redux  <br>
 Backend - ExpressJS <br>
 Database - MongoDB <br>
+Cloud - AWS
+Load Balancer - Elastic Load Balancer
 
 # Scrum Meeting Schedule:
 Wednesday  <br>
 Friday
+
+# Core XP values
+Simplicity <br>
+Communication <br>
+Feedback
 
 
 
