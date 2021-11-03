@@ -15,7 +15,7 @@ const Login = () => {
                         <Row>
                             <Col>
                                 <Figure.Image
-                                    src={`${window.location.origin}/login1.svg`}
+                                    src={`${window.location.origin}/login.svg`}
                                 />
                             </Col>
                             <Col>
