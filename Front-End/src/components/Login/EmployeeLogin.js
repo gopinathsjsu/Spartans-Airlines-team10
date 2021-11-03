@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { mainSliceActions } from '../../store/mainSlice'
 import './CommonLogin.css'
 
-const CustomerLogin = () => {
+const EmployeeLogin = () => {
     const dispatch = useDispatch()
 
     const onChangeEmail = (e) => {
@@ -26,12 +26,12 @@ const CustomerLogin = () => {
                         <Row>
                             <Col>
                                 <Figure.Image
-                                    src={`${window.location.origin}/customerlogin.svg`}
+                                    src={`${window.location.origin}/employeelogin.svg`}
                                 />
                             </Col>
                             <Col>
                                 <Form id="login-form" method="post">
-                                    <h1>Customer Login</h1>
+                                    <h1>Employee Login</h1>
                                     <p>Enter your details to login</p>
                                     <Form.Group className="loginbox" controlId="formUsername">
                                         <Form.Control type="email" name="email" placeholder="Enter Your Email" onChange={onChangeEmail} required />
@@ -53,4 +53,4 @@ const CustomerLogin = () => {
     )
 }
 
-export default CustomerLogin;
+export default EmployeeLogin;
