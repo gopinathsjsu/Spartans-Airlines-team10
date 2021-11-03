@@ -1,21 +1,11 @@
-import {
-    Form, Button, Container, Col, Row,
-} from 'react-bootstrap';
 import Navigationbar from '../Navigationbar/Navigationbar'
-import { useDispatch } from 'react-redux'
-import { mainSliceActions } from '../../store/mainSlice'
+import {
+    Form, Button, Container, Col, Row, Figure
+} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Login.css'
 
 const Login = () => {
-    const dispatch = useDispatch()
-
-    const onChangeEmail = (e) => {
-        dispatch(mainSliceActions.setEmail(e.target.value))
-    }
-
-    const onChangePassword = (e) => {
-        dispatch(mainSliceActions.setPassword(e.target.value))
-    }
-
     return (
         <div>
             <Navigationbar />
@@ -24,20 +14,30 @@ const Login = () => {
                     <div>
                         <Row>
                             <Col>
-                                <Form id="login-form" method="post">
-                                    <h1>Login</h1>
-                                    <p>Enter your details to login</p>
-                                    <Form.Group controlId="formUsername">
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" name="email" placeholder="Enter Your Email" onChange={onChangeEmail} required />
-                                    </Form.Group>
-                                    <Form.Group controlId="formPassword">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control type="password" name="password" placeholder="Enter Your Password" onChange={onChangePassword} required />
-                                    </Form.Group>
-                                    <Button id="loginbutton" type="submit">
-                                        Submit
-                      </Button>
+                                <Figure.Image
+                                    src={`${window.location.origin}/login.svg`}
+                                />
+                            </Col>
+                            <Col>
+                                <Form id="login-box" method="post">
+                                    <h1>Are you a customer ?</h1>
+                                    <Link
+                                        id="customerLoginLink"
+                                        to={{
+                                            pathname: '/customerlogin',
+                                        }}
+                                    ><Button className="loginbutton" type="submit">
+                                            Customer Login
+                                    </Button></Link>
+                                    <h1>Are you an employee ?</h1>
+                                    <Link
+                                        id="employeeLoginLink"
+                                        to={{
+                                            pathname: '/employeelogin',
+                                        }}
+                                    ><Button className="loginbutton" type="submit">
+                                        Employee Login
+                                    </Button></Link>
                                 </Form>
                             </Col>
                         </Row>
@@ -48,4 +48,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Login
