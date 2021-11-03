@@ -3,51 +3,55 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navigationbar.css'
 import {
-    Navbar,  Nav, Button
+    Navbar, Nav, Button,
 } from 'react-bootstrap';
 
 class Navigationbar extends Component {
 
+
     render() {
         const navLogin = (
             <Nav className="ml-auto">
+
                 <Link
                     id="loginLink"
                     to={{
                         pathname: '/login',
                     }}
-                >
-                    <Button id="navbarlogin" className="mr-sm-2 navbarbuttons">
-                        Login
-                    </Button>
-                </Link>
+                ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Login
+                    </Button></Link>
 
                 <Link
-                    id="signupLink"
+                    id="signUpLink"
                     to={{
                         pathname: '/signup',
                     }}
-                >
-                    <Button className="navbarbuttons">
-                        Sign Up
-                    </Button>
-                </Link>
+                ><Button className="navbarbuttons">Sign Up
+                    </Button></Link>
             </Nav>
         );
-
         return (
             <div>
                 <Navbar id="nav-bar">
                     <div className="container">
                         <Navbar.Brand id="nav-brand">
+                            <img
+                                alt=""
+                                src={`${window.location.origin}/san-jose-state-university-icon.png`}
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                            />
+                            {' '}
                             <Link
-                                id="dashboardLink"
+                                id="landingPageLink"
                                 to={{
                                     pathname: '/',
                                 }}
                             >
-                                Spartan Airlines
+                            Spartan Airlines
                             </Link>
+
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         {navLogin}
