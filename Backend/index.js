@@ -66,7 +66,7 @@ const signUp = require('./Routes/Signup.js');
 // Route config
 app.use('/login', login);
 app.use('/signup', signUp);
-// app.use('/profile', profile);
+app.use('/profile', profile);
 
 // start your server on port 3001
 app.listen(3001);
