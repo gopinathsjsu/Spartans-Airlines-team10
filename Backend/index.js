@@ -61,7 +61,7 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
 // Routing
 const login = require('./Routes/Login.js');
 const signUp = require('./Routes/Signup.js');
-const profile = require('./Routes/Profile.js');
+//const profile = require('./Routes/Profile.js');
 
 // Route config
 app.use('/login', login);
