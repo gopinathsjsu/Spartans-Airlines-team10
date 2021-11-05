@@ -61,12 +61,12 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
 // Routing
 const login = require('./Routes/Login.js');
 const signUp = require('./Routes/Signup.js');
-//const profile = require('./Routes/Profile.js');
+const profile = require('./Routes/Profile.js');
 
 // Route config
 app.use('/login', login);
 app.use('/signup', signUp);
-// app.use('/profile', profile);
+app.use('/profile', profile);
 
 // start your server on port 3001
 app.listen(3001);
