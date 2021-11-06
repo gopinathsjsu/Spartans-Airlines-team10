@@ -54,44 +54,45 @@ router.post("/signup", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   Employee.find({ emailID: req.body.emailID })
     .exec()
-    .then(employee => {
+    .then((employee) => {
       if (employee.length < 1) {
+        res.setHeader("Content-Type", "application/json");
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Auth failed",
         });
       }
       bcrypt.compare(req.body.password, employee[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
-            message: "Auth failed"
+            message: "Auth failed",
           });
         }
         if (result) {
-          console.log(employee);
-          const token = jwt.sign(
-            {
-              email: employee[0].emailID,
-              userId: employee[0]._id
-            },
-            process.env.JWT_KEY,
-            {
-                expiresIn: "1h"
-            }
-          );
+          const id = JSON.stringify(result._id);
+          res.cookie("cookie", id, {
+            maxAge: 5000000,
+            httpOnly: false,
+            path: "/",
+          });
+          req.session.employee = result;
+          res.setHeader("Content-Type", "application/json");
+          res.status(200);
+          result.status = 200;
           return res.status(200).json({
             message: "Auth successful",
-            token: token
+          });
+          // res.end(JSON.stringify(result));
+        } else {
+          res.status(401).json({
+            message: "Auth failed",
           });
         }
-        res.status(401).json({
-          message: "Auth failed"
-        });
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
 });
