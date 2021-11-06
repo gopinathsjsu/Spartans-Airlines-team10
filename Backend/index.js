@@ -7,9 +7,7 @@ const session = require('express-session');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./Util/config');
-const dotenv = require('dotenv');
-dotenv.config();
-console.log(process.env.MONGODB_USER)
+
 // use cors to allow cross origin resource sharing
 app.use(cors({ origin: `${config.api_local}`, credentials: true }));
 
@@ -70,6 +68,7 @@ const empRoutes = require("./Routes/employee");
 // Route config
 app.use('/login', login);
 app.use('/signup', signUp);
+// app.use('/profile', profile);
 app.use("/employee", empRoutes);
 
 
@@ -88,7 +87,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-// app.use('/profile', profile);
 
 // start your server on port 3001
 app.listen(config.serverPort);
