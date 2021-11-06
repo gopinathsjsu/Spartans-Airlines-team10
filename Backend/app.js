@@ -9,7 +9,6 @@ const empRoutes = require("./Routes/employee");
 const dotenv = require('dotenv');
 dotenv.config();
 
-
 const url = "mongodb+srv://"+process.env.MONGODB_USER+":"+process.env.MONGODB_PASSWORD+"@cluster0.wvjnk.mongodb.net/AirlineReservation?retryWrites=true&w=majority";
 
 const connectionParams={
