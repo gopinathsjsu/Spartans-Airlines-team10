@@ -14,7 +14,7 @@ app.use(cors({ origin: `${config.api_local}`, credentials: true }));
 // use express session to maintain session data
 app.use(
   session({
-    secret: 'cmpe202_AirlineReservation',
+    secret: config.secret,
     resave: false,
     saveUninitialized: false,
     duration: 60 * 60 * 1000, // Overall duration of Session : 30 minutes : 1800 seconds
@@ -46,7 +46,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-
+console.log(config.mongoURI);
 mongoose.connect(config.mongoURI, options, (err, res) => {
   if (err) {
     console.log('cannot connect to mongo db');
@@ -61,13 +61,33 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
 // Routing
 const login = require('./Routes/Login.js');
 const signUp = require('./Routes/Signup.js');
-//const profile = require('./Routes/Profile.js');
+const profile = require('./Routes/Profile.js');
+const empRoutes = require("./Routes/employee");
+
 
 // Route config
 app.use('/login', login);
 app.use('/signup', signUp);
-// app.use('/profile', profile);
+app.use('/profile', profile);
+app.use("/employee", empRoutes);
+
+
+app.use((req, res, next) => {
+  const error = new Error("Route Not found");
+  error.status = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
 
 // start your server on port 3001
-app.listen(3001);
+app.listen(config.serverPort);
 console.log('Server Listening on port 3001');
