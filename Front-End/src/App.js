@@ -8,6 +8,7 @@ const SignUp = React.lazy(() => import('./components/Signup/Signup'))
 const Login = React.lazy(() => import('./components/Login/Login'))
 const CustomerLogin = React.lazy(() => import('./components/Login/CustomerLogin'))
 const EmployeeLogin = React.lazy(() => import('./components/Login/EmployeeLogin'))
+const ProfilePage = React.lazy(() => import('./components/ProfilePage/ProfilePage'))
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/customerlogin" component={CustomerLogin} />
         <Route path="/employeelogin" component={EmployeeLogin} />
+	  <Route path="/profile" component={ProfilePage} />
       </Suspense>
     </div>
   );

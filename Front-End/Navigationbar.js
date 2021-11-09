@@ -26,7 +26,7 @@ class Navigationbar extends Component {
                     to={{
                         pathname: '/signup',
                     }}
-                ><Button className="navbarbuttons">Sign Up
+                ><Button id="navbarchart" className="navbarbuttons">Sign Up
                     </Button></Link>
 				<Link
                     id="profilepageLink"
@@ -34,7 +34,7 @@ class Navigationbar extends Component {
                         pathname: '/profile',
                     }}
                 >
-                    <Button id="navbarprofilepage" className="mr-sm-2 navbarbuttons">
+                    <Button id="navbarchart" className="navbarbuttons">
                         Profile
                     </Button>
                 </Link>
