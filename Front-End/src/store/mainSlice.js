@@ -1,22 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    name: '',
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
-    fullname: '',
-    emailaddress: '',
     address: '',
     phonenumber: '',
-    changepassword: '',
+    gender: '',
 }
 
 const mainSlice = createSlice({
     name: 'mainslice',
     initialState: initialState,
     reducers: {
-        setName(state, action) {
-            state.name = action.payload
+        setFirstName(state, action) {
+            state.firstname = action.payload
+        },
+        setLastName(state, action) {
+            state.lastname = action.payload
         },
         setEmail(state, action) {
             state.email = action.payload
@@ -24,21 +26,15 @@ const mainSlice = createSlice({
         setPassword(state, action) {
             state.password = action.payload
         },
-        setFullName(state, action) {
-            state.fullname = action.payload
-        },
-        setEmailAddress(state, action) {
-            state.emailaddress = action.payload
-        },
         setAddress(state, action) {
             state.address = action.payload
         },
         setPhoneNumber(state, action) {
             state.phonenumber = action.payload
         },
-        setChangePassword(state, action) {
-            state.changepassword = action.payload
-        },
+        setGender(state, action) {
+            state.gender = action.payload
+        }
     }
 });
 
