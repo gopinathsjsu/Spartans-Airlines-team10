@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
+import Moment from 'moment'
 
 const initialState = {
     firstname: '',
     lastname: '',
-    email: '',
-    password: '',
     address: '',
     phonenumber: '',
     gender: '',
+    dob: Moment(new Date()).format('MM-DD-YYYY'),
+    email: '',
+    password: '',
 }
 
 const mainSlice = createSlice({
@@ -20,12 +22,6 @@ const mainSlice = createSlice({
         setLastName(state, action) {
             state.lastname = action.payload
         },
-        setEmail(state, action) {
-            state.email = action.payload
-        },
-        setPassword(state, action) {
-            state.password = action.payload
-        },
         setAddress(state, action) {
             state.address = action.payload
         },
@@ -34,7 +30,16 @@ const mainSlice = createSlice({
         },
         setGender(state, action) {
             state.gender = action.payload
-        }
+        },
+        setDob(state, action) {
+            state.dob = action.payload
+        },
+        setEmail(state, action) {
+            state.email = action.payload
+        },
+        setPassword(state, action) {
+            state.password = action.payload
+        },
     }
 });
 
