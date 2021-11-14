@@ -59,12 +59,12 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
   console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
 });
 // Routing
-const login = require("./Routes/Login.js");
-const signUp = require("./Routes/Signup.js");
-const profile = require("./Routes/Profile.js");
+const login = require("./Routes/Customer/Login.js");
+const signUp = require("./Routes/Customer/Signup.js");
+const profile = require("./Routes/Profile/Profile.js");
 const addFlightRoutes = require("./Routes/Employee/addFlight");
 const editFlight = require("./Routes/Employee/editFlight");
-const flights = require("./Routes/flights.js");
+const flights = require("./Routes/Flights/flights.js");
 
 // const editFlight = require("./Routes/Employee/editFlight")
 

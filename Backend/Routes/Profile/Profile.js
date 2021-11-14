@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const Customers = require("../Models/CustomerModel");
+const Customers = require("../../Models/CustomerModel");
 
 const router = express.Router();
 
