@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
             console.log("Flight details", data);
             res.end(JSON.stringify(data));
         }
-    });
+    }).sort({departureDate:1});
 });
 
 module.exports = router;
