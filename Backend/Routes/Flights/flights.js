@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const mongoose = require("mongoose");
-const Flight = require("../Models/FlightsModel.js");
+const Flight = require("../../Models/FlightsModel.js");
 
 const router = express.Router();
 
