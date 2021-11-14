@@ -64,6 +64,7 @@ const signUp = require("./Routes/Signup.js");
 const profile = require("./Routes/Profile.js");
 const addFlightRoutes = require("./Routes/Employee/addFlight");
 const editFlight = require("./Routes/Employee/editFlight");
+const flights = require("./Routes/flights.js");
 
 // const editFlight = require("./Routes/Employee/editFlight")
 
@@ -73,6 +74,7 @@ app.use("/signup", signUp);
 app.use("/profile", profile);
 app.use("/employee/addFlight", addFlightRoutes);
 app.use("/employee/editFlight", editFlight);
+app.use("/flights",flights);
 
 app.use((req, res, next) => {
   const error = new Error("Route Not found");

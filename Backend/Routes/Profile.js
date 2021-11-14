@@ -39,6 +39,7 @@ router.get("/", (req, res) => {
 // Update the profile page
 router.put("/", (req, res) => {
   const customerID = mongoose.Types.ObjectId(req.body.customerID);
+  console.log('reqqqqqq',req.body);
   Customers.updateOne(
     {
       _id: customerID,
