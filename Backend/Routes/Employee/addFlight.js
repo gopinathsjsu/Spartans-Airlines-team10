@@ -53,15 +53,12 @@ router.post("/", (req, res, next) => {
         destination = req.body.destination;
         destinationCode = req.body.destinationCode;
         depISOString = depdate.toISOString();
-        console.log("departure date" + depISOString);
 
         var arrdate = new Date(
           Date.UTC(arrYear, arrMonth, arrDate, arrHrs, arrMins, secs)
         );
-        console.log("arrival date" + arrdate);
 
         arrISOString = arrdate.toISOString();
-        console.log("arrival date" + arrISOString);
         price = req.body.price;
         capacity = req.body.capacity;
 
@@ -71,7 +68,6 @@ router.post("/", (req, res, next) => {
 
         const hours = Math.floor(diffInMilliseconds / 3600) % 24;
         // diffInMilliSeconds -= hours * 3600;
-        console.log("calculated hours", hours);
 
         function timeDiffCalc(dateFuture, dateNow) {
           let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;
@@ -79,17 +75,14 @@ router.post("/", (req, res, next) => {
           // calculate days
           const days = Math.floor(diffInMilliSeconds / 86400);
           diffInMilliSeconds -= days * 86400;
-          console.log("calculated days", days);
 
           // calculate hours
           const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
           diffInMilliSeconds -= hours * 3600;
-          console.log("calculated hours", hours);
 
           // calculate minutes
           const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
           diffInMilliSeconds -= minutes * 60;
-          console.log("minutes", minutes);
 
           let difference = "";
           if (days > 0) {
@@ -120,7 +113,7 @@ router.post("/", (req, res, next) => {
         for (i = 1; i <= rows; i++) {
           for (j = 1; j <= 6; j++) {
             obj = {
-              seatID: alphabet[j],
+              seatID: alphabet[i],
               seatNumber: j,
               status: "A",
             };
@@ -128,7 +121,6 @@ router.post("/", (req, res, next) => {
           }
         }
 
-        // console.log(seats);
 
         const flight = new Flight({
           _id: new mongoose.Types.ObjectId(),
