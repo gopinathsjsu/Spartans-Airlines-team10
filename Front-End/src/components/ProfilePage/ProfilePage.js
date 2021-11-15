@@ -2,67 +2,145 @@ import {
     Form, Button, Container, Col, Row,
 } from 'react-bootstrap';
 import Navigationbar from '../Navigationbar/Navigationbar'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { mainSliceActions } from '../../store/mainSlice'
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './ProfilePage.css'
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
+    const firstName = useSelector(state => state.mainSlice.firstname)
+    const lastName = useSelector(state => state.mainSlice.lastname)
+    const address = useSelector(state => state.mainSlice.address)
+    const phoneNum = useSelector(state => state.mainSlice.phonenumber)
+    const gender = useSelector(state => state.mainSlice.gender)
+    const dob = useSelector(state => state.mainSlice.dob)
+    const emailID = useSelector(state => state.mainSlice.email)
 
-    const onChangeFullName = (e) => {
-        dispatch(mainSliceActions.setFullName(e.target.value))
+    const onChangeFirstName = (e) => {
+        dispatch(mainSliceActions.setFirstName(e.target.value))
     }
-    const onChangeEmailAddress = (e) => {
-        dispatch(mainSliceActions.setEmailAddress(e.target.value))
+
+    const onChangeLastName = (e) => {
+        dispatch(mainSliceActions.setLastName(e.target.value))
     }
-	    const onChangeAddress = (e) => {
+
+    const onChangeAddress = (e) => {
         dispatch(mainSliceActions.setAddress(e.target.value))
     }
-	    const onChangePhoneNumber = (e) => {
+
+    const onChangePhoneNumber = (e) => {
         dispatch(mainSliceActions.setPhoneNumber(e.target.value))
     }
-    const onChangeChangePassword = (e) => {
-        dispatch(mainSliceActions.setChangePassword(e.target.value))
+
+    const onChangeGender = (e) => {
+        dispatch(mainSliceActions.setGender(e.target.value))
     }
+
+    const onChangeDob = (e) => {
+        dispatch(mainSliceActions.setDob(e.toISOString()))
+    }
+
+    const onChangeEmailAddress = (e) => {
+        dispatch(mainSliceActions.setEmail(e.target.value))
+    }
+
+    /* const onProfile = (data) => {
+        dispatch(mainSliceActions.setFirstName(data.firstName))
+        dispatch(mainSliceActions.setLastName(data.lastName))
+        dispatch(mainSliceActions.setAddress(data.address))
+        dispatch(mainSliceActions.setPhoneNumber(data.phoneNum))
+        dispatch(mainSliceActions.setGender(data.gender))
+        dispatch(mainSliceActions.setDob(data.dob))
+        dispatch(mainSliceActions.setEmail(data.emailID))
+
+    } */
+
+    const handleProfile = (e) => {
+        e.preventDefault()
+        const customerID = sessionStorage.getItem('userId')
+
+        console.log(dob)
+        const data = {
+            firstName,
+            lastName,
+            dob,
+            gender,
+            address,
+            emailID,
+            phoneNum,
+            customerID,
+        }
+
+        console.log(data)
+        console.log(sessionStorage.getItem('userId'))
+        axios.defaults.withCredentials = true;
+        axios.put('http://localhost:3001/profile', data)
+            .then((response) => {
+                // onProfile(response.data)
+                validProfile()
+            })
+            .catch(() => {
+                invalidProfile()
+            })
+    }
+
+    const validProfile = () => toast.success('Profile changed Successfully!')
+    const invalidProfile = () => toast.error('Email Address Already Exists')
+
+
     return (
         <div>
+            <Toaster />
             <Navigationbar />
             <div className="container">
                 <Container>
                     <div>
                         <Row>
                             <Col>
-                                <Form id="profile-form" method="post">
-                                    <h1>Profile</h1>
-                                    <p>Enter Details</p>
-                                    <Form.Group controlId="formFullName">
-                                        <Form.Label>Full Name</Form.Label>
-                                        <Form.Control type="text" name="fullname" placeholder="Enter Your Full Name" onChange={onChangeFullName} required />
-                                    </Form.Group>
-                                    <Form.Group controlId="formEmailAddress">
-                                        <Form.Label>Email Address</Form.Label>
-                                        <Form.Control type="email" name="emailaddress" placeholder="Enter Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={onChangeEmailAddress} required />
-                                    </Form.Group>
-  									<Form.Group controlId="formAddress">
-                                        <Form.Label>Address</Form.Label>
-                                        <Form.Control type="text" name="address" placeholder="Enter Your Address" onChange={onChangeAddress} required />
-                                    </Form.Group>
-									<Form.Group controlId="formPhoneNumber">
-                                        <Form.Label>Phone Number</Form.Label>
-                                        <Form.Control type="text" name="phonenumber" placeholder="Enter Your Phone Number" onChange={onChangePhoneNumber} required />
-                                    </Form.Group>
-									<Form.Group controlId="formChangePassword">
-                                        <Form.Label>Change Password</Form.Label>
-                                        <Form.Control type="password" name="changepassword" placeholder="Enter Your Password to Change" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={onChangeChangePassword} required />
-                                    </Form.Group>
-                                    <small>
-                                        Must contain at least one  number and one uppercase and
-                                        lowercase letter, and at least 8 or more characters
-									</small>
-                                    <br />
-                                    <br />
-                                    <Button id="submitbutton" type="submit">
-                                        Submit
-                      </Button>
+                                <Form id="profile-form" method="post" onSubmit={handleProfile}>
+                                    <h1 id="heading">Your Profile</h1>
+                                    <div id="profileformbox">
+                                        <Form.Group className="profilebox" controlId="formFirstName">
+                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Control className="profileinput" type="text" name="firstname" value={firstName} onChange={onChangeFirstName} required />
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formLastName">
+                                            <Form.Label>Last Name</Form.Label>
+                                            <Form.Control className="profileinput" type="text" name="lastname" value={lastName} onChange={onChangeLastName} required />
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formEmailAddress">
+                                            <Form.Label>Email Address</Form.Label>
+                                            <Form.Control className="profileinput" type="email" name="emailaddress" value={emailID} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={onChangeEmailAddress} required />
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formAddress">
+                                            <Form.Label>Address</Form.Label>
+                                            <Form.Control className="profileinput" type="text" name="address" value={address} onChange={onChangeAddress} required />
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formPhoneNumber">
+                                            <Form.Label>Phone Number</Form.Label>
+                                            <Form.Control className="profileinput" type="text" name="phonenumber" value={phoneNum} onChange={onChangePhoneNumber} required />
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formGender">
+                                            <Form.Label>Gender</Form.Label>
+                                            <Form.Control id="genderinput" type="text" name="gender" value={gender} onChange={onChangeGender} as="select" required>
+                                                <option hidden value="Choose Your Gender">Choose Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </Form.Control>
+                                        </Form.Group>
+                                        <Form.Group className="profilebox" controlId="formDob">
+                                            <Form.Label>Date of Birth:</Form.Label>
+                                            <DatePicker id="dateinput" selected={new Date(dob)} onChange={(date) => onChangeDob(date)} />
+                                        </Form.Group>
+                                        <br />
+                                        <Button id="submitbutton" type="submit">
+                                            Update
+                                    </Button>
+                                    </div>
                                 </Form>
                             </Col>
                         </Row>

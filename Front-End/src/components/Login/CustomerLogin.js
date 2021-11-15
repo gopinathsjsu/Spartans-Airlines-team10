@@ -23,17 +23,20 @@ const CustomerLogin = () => {
 
     const onLogin = (data) => {
         sessionStorage.setItem('userId', data._id)
+
         dispatch(mainSliceActions.setFirstName(data.firstName))
         dispatch(mainSliceActions.setLastName(data.lastName))
         dispatch(mainSliceActions.setEmail(data.emailID))
         dispatch(mainSliceActions.setAddress(data.address))
         dispatch(mainSliceActions.setPhoneNumber(data.phoneNum))
         dispatch(mainSliceActions.setGender(data.gender))
+        dispatch(mainSliceActions.setDob(data.dob))
         dispatch(mainSliceActions.setPassword(''))
     }
 
     const handleLogin = (event) => {
         event.preventDefault()
+
         const data = {
             emailID: email,
             password
@@ -41,6 +44,7 @@ const CustomerLogin = () => {
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:3001/login', data)
             .then((response) => {
+                console.log(response.data)
                 onLogin(response.data)
                 validLogin()
             })

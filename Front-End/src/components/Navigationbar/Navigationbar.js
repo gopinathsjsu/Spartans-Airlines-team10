@@ -26,15 +26,17 @@ class Navigationbar extends Component {
                     to={{
                         pathname: '/signup',
                     }}
-                ><Button className="navbarbuttons">Sign Up
+                ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Sign Up
                     </Button></Link>
+		    
+		    
 				<Link
                     id="profilepageLink"
                     to={{
                         pathname: '/profile',
                     }}
                 >
-                    <Button id="navbarprofilepage" className="mr-sm-2 navbarbuttons">
+                    <Button id="navbarchart" className="mr-sm-2 navbarbuttons">
                         Profile
                     </Button>
                 </Link>
