@@ -53,4 +53,4 @@ const EmployeeLogin = () => {
     )
 }
 
-export default EmployeeLogin;
+export default EmployeeLogin

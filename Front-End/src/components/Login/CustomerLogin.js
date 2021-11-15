@@ -7,8 +7,12 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { mainSliceActions } from '../../store/mainSlice'
 import './CommonLogin.css'
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const CustomerLogin = () => {
+    const [redirectFlag, setRedirectFlag] = useState(false)
+
     const dispatch = useDispatch()
     const email = useSelector(state => state.mainSlice.email)
     const password = useSelector(state => state.mainSlice.password)
@@ -44,20 +48,19 @@ const CustomerLogin = () => {
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:3001/login', data)
             .then((response) => {
-                console.log(response.data)
                 onLogin(response.data)
-                validLogin()
+                setRedirectFlag(true)
             })
             .catch(() => {
                 invalidLogin()
             })
     }
 
-    const validLogin = () => toast.success('Logged In Successfully!')
     const invalidLogin = () => toast.error('Invalid Email Address or Password.')
 
     return (
         <div>
+        {redirectFlag ? <Redirect to="/customerdashboard" /> : null}
             <Toaster />
             <Navigationbar />
             <div className="container">
@@ -93,4 +96,4 @@ const CustomerLogin = () => {
     )
 }
 
-export default CustomerLogin;
+export default CustomerLogin
