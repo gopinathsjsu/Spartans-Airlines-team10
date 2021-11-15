@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import Moment from 'moment'
 
 const initialState = {
     firstname: '',
@@ -7,7 +6,7 @@ const initialState = {
     address: '',
     phonenumber: '',
     gender: '',
-    dob: Moment(new Date()).format('MM-DD-YYYY'),
+    dob: new Date().toISOString(),
     email: '',
     password: '',
 }

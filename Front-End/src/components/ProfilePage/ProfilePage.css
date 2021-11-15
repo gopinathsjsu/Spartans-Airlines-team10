@@ -1,12 +1,40 @@
 #profile-form {
-    margin-top: 80px;
+    margin-top: 20px;
+}
+
+#profileformbox {
+    margin-top: 30px;
 }
 
 .profilebox {
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+#heading {
+    text-align: left;
 }
 
 #submitbutton {
     background-color: #0055a2;
     border-color: #0055a2;
+}
+
+label {
+    float:left;
+    margin-right:15px;
+}
+
+.profileinput {
+    width: 50%;
+    margin-left: 200px;
+
+}
+
+#genderinput {
+    width: 25%;
+    margin-left: 200px;
+}
+
+#dateinput {
+    float: left;
 }

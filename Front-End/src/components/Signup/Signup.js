@@ -4,7 +4,6 @@ import {
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import DatePicker from "react-datepicker";
-import Moment from 'moment';
 import Navigationbar from '../Navigationbar/Navigationbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { mainSliceActions } from '../../store/mainSlice';
@@ -44,7 +43,7 @@ const Signup = () => {
     }
 
     const onChangeDob = (e) => {
-        dispatch(mainSliceActions.setDob(Moment(e).format('MM/DD/YYYY')))
+        dispatch(mainSliceActions.setDob(e.toISOString()))
     }
 
     const onChangeEmail = (e) => {
