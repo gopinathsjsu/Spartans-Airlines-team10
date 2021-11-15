@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import '../../App.css';
+import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 import './Navigationbar.css'
 import {
@@ -7,41 +7,61 @@ import {
 } from 'react-bootstrap';
 
 class Navigationbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loadedCookie: cookie.load('cookie'),
+        }
+        this.handleLogout = this.handleLogout.bind(this)
+    }
 
+    handleLogout = () => {
+        cookie.remove('cookie', { path: '/' });
+    }
 
     render() {
-        const navLogin = (
-            <Nav className="ml-auto">
-
-                <Link
-                    id="loginLink"
-                    to={{
-                        pathname: '/login',
-                    }}
-                ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Login
-                    </Button></Link>
-
-                <Link
-                    id="signUpLink"
-                    to={{
-                        pathname: '/signup',
-                    }}
-                ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Sign Up
-                    </Button></Link>
-		    
-		    
-				<Link
-                    id="profilepageLink"
-                    to={{
-                        pathname: '/profile',
-                    }}
-                >
-                    <Button id="navbarchart" className="mr-sm-2 navbarbuttons">
-                        Profile
+        let navLogin = null
+        const loadedCookie = this.state
+        if (loadedCookie.loadedCookie) {
+            navLogin = (
+                <Nav className="ml-auto">
+                    <Link
+                        id="profilepageLink"
+                        to={{
+                            pathname: '/profile',
+                        }}
+                    >
+                        <Button id="navbarchart" className="mr-sm-2 navbarbuttons">
+                            Profile
+                        </Button>
+                    </Link>
+                    <Button id="navbarchart" className="mr-sm-2 navbarbuttons" href="/" onClick={this.handleLogout}>
+                        Logout
                     </Button>
-                </Link>
-            </Nav>
-        );
+                </Nav>
+            );
+        } else {
+            navLogin = (
+                <Nav className="ml-auto">
+
+                    <Link
+                        id="loginLink"
+                        to={{
+                            pathname: '/login',
+                        }}
+                    ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Login
+                        </Button></Link>
+
+                    <Link
+                        id="signUpLink"
+                        to={{
+                            pathname: '/signup',
+                        }}
+                    ><Button id="navbarchart" className="mr-sm-2 navbarbuttons">Sign Up
+                        </Button></Link>
+                </Nav>
+            );
+        }
         return (
             <div>
                 <Navbar id="nav-bar">
@@ -61,7 +81,7 @@ class Navigationbar extends Component {
                                     pathname: '/',
                                 }}
                             >
-                            Spartan Airlines
+                                Spartan Airlines
                             </Link>
 
                         </Navbar.Brand>
@@ -75,4 +95,4 @@ class Navigationbar extends Component {
 }
 
 
-export default Navigationbar;
+export default Navigationbar
