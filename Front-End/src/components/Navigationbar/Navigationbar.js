@@ -16,7 +16,8 @@ class Navigationbar extends Component {
     }
 
     handleLogout = () => {
-        cookie.remove('cookie', { path: '/' });
+        cookie.remove('cookie', { path: '/' })
+        sessionStorage.removeItem('customerId')
     }
 
     render() {

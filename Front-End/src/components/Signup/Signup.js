@@ -5,12 +5,16 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import DatePicker from "react-datepicker";
 import Navigationbar from '../Navigationbar/Navigationbar';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { mainSliceActions } from '../../store/mainSlice';
 import './Signup.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 const Signup = () => {
+    const [redirectFlag, setRedirectFlag] = useState(false)
+
     const dispatch = useDispatch()
 
     const firstName = useSelector(state => state.mainSlice.firstname)
@@ -55,7 +59,8 @@ const Signup = () => {
     }
 
     const onSignUp = (data) => {
-        sessionStorage.setItem('userId', data._id)
+        sessionStorage.setItem('customerId', data._id)
+
         dispatch(mainSliceActions.setFirstName(data.firstName))
         dispatch(mainSliceActions.setLastName(data.lastName))
         dispatch(mainSliceActions.setAddress(data.address))
@@ -84,18 +89,18 @@ const Signup = () => {
         axios.post('http://localhost:3001/signup', data)
             .then((response) => {
                 onSignUp(response.data)
-                validSignUp()
+                setRedirectFlag(true)
             })
             .catch(() => {
                 invalidSignUp()
             })
     }
 
-    const validSignUp = () => toast.success('Signed Up Successfully!')
     const invalidSignUp = () => toast.error('Email Address Already Exists')
 
     return (
         <div>
+            {redirectFlag ? <Redirect to="/customerdashboard" /> : null}
             <Toaster />
             <Navigationbar />
             <div className="container">

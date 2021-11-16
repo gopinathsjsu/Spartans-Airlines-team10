@@ -61,7 +61,7 @@ const ProfilePage = () => {
 
     const handleProfile = (e) => {
         e.preventDefault()
-        const customerID = sessionStorage.getItem('userId')
+        const customerID = sessionStorage.getItem('customerId')
 
         console.log(dob)
         const data = {
@@ -75,8 +75,6 @@ const ProfilePage = () => {
             customerID,
         }
 
-        console.log(data)
-        console.log(sessionStorage.getItem('userId'))
         axios.defaults.withCredentials = true;
         axios.put('http://localhost:3001/profile', data)
             .then((response) => {
@@ -88,7 +86,7 @@ const ProfilePage = () => {
             })
     }
 
-    const validProfile = () => toast.success('Profile changed Successfully!')
+    const validProfile = () => toast.success('Profile Changed Successfully!')
     const invalidProfile = () => toast.error('Email Address Already Exists')
 
 
