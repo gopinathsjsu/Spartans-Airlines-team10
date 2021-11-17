@@ -5,19 +5,15 @@ import './Navigationbar.css'
 import {
     Navbar, Nav, Button,
 } from 'react-bootstrap';
+import OffCanvas from './OffCanvas'
 
 class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loadedCookie: cookie.load('cookie'),
+            show: false,
         }
-        this.handleLogout = this.handleLogout.bind(this)
-    }
-
-    handleLogout = () => {
-        cookie.remove('cookie', { path: '/' })
-        sessionStorage.removeItem('customerId')
     }
 
     render() {
@@ -26,19 +22,7 @@ class Navigationbar extends Component {
         if (loadedCookie.loadedCookie) {
             navLogin = (
                 <Nav className="ml-auto">
-                    <Link
-                        id="profilepageLink"
-                        to={{
-                            pathname: '/profile',
-                        }}
-                    >
-                        <Button id="navbarchart" className="mr-sm-2 navbarbuttons">
-                            Profile
-                        </Button>
-                    </Link>
-                    <Button id="navbarchart" className="mr-sm-2 navbarbuttons" href="/" onClick={this.handleLogout}>
-                        Logout
-                    </Button>
+                    <OffCanvas />
                 </Nav>
             );
         } else {
