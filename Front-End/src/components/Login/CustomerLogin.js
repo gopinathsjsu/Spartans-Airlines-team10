@@ -26,7 +26,7 @@ const CustomerLogin = () => {
     }
 
     const onLogin = (data) => {
-        sessionStorage.setItem('userId', data._id)
+        sessionStorage.setItem('customerId', data._id)
 
         dispatch(mainSliceActions.setFirstName(data.firstName))
         dispatch(mainSliceActions.setLastName(data.lastName))
