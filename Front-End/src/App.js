@@ -10,6 +10,7 @@ const CustomerLogin = React.lazy(() => import('./components/Login/CustomerLogin'
 const EmployeeLogin = React.lazy(() => import('./components/Login/EmployeeLogin'))
 const ProfilePage = React.lazy(() => import('./components/ProfilePage/ProfilePage'))
 const CustomerDashboard = React.lazy(() => import('./components/Dashboard/CustomerDashboard/CustomerDashboard'))
+const EmployeeDashboard = React.lazy(() => import('./components/Dashboard/EmployeeDashboard/EmployeeDashboard'))
 const ManageTravel = React.lazy(() => import('./components/Dashboard/ManageTravel/ManageTravel'))
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/employeelogin" component={EmployeeLogin} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/customerdashboard" component={CustomerDashboard} />
+        <Route path="/employeedashboard" component={EmployeeDashboard} />
         <Route path="/managetravel" component={ManageTravel} />
       </Suspense>
     </div>

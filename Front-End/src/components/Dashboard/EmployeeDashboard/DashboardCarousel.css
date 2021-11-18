@@ -1,0 +1,16 @@
+#carousel {
+    margin-top: 20px;
+    border-style: solid;
+    border-color: #D4D4D4;
+    border-radius: 5px;
+}
+
+.carouselitem {
+    height: 550px;
+}
+
+.carouselimage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
