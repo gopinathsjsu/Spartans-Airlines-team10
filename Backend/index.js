@@ -66,8 +66,7 @@ const addFlightRoutes = require("./Routes/Employee/addFlight");
 const editFlight = require("./Routes/Employee/editFlight");
 const flights = require("./Routes/Flights/flights.js");
 const reservations = require("./Routes/Flights/reservations");
-
-// const editFlight = require("./Routes/Employee/editFlight")
+const cancelFlight = require("./Routes/Employee/cancelFlight")
 
 // Route config
 app.use("/login", login);
@@ -75,6 +74,7 @@ app.use("/signup", signUp);
 app.use("/profile", profile);
 app.use("/employee/addFlight", addFlightRoutes);
 app.use("/employee/editFlight", editFlight);
+app.use("/employee/cancelFlight", cancelFlight);
 app.use("/flights",flights);
 app.use("/reservations",reservations);
 
