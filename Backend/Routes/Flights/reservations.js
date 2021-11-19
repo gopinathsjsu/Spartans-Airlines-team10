@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
             if (paymentMode == "mileagePoints") {
                 if (customerResult.rewardPoints < mileagePointsPaid) {
                     error = {
-                        message: "you do not have sufficient reward points to book tickets",
+                        message: "you do not have suffgetMileagePointsicient reward points to book tickets",
                         errCode: 400
                     }
                     res.setHeader("Content-Type", "application/json");
