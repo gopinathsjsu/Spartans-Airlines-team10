@@ -3,7 +3,6 @@ const router = express.Router();
 const Flight = require("../../Models/FlightsModel.js");
 const Reservations = require("../../Models/ReservationsModel.js");
 const mongodb = require("mongodb");
-const { Mongoose } = require("mongoose");
 
 router.delete("/:flightID", async (req, res, next) => {
   var objID = require("mongoose").Types.ObjectId;
@@ -61,5 +60,6 @@ async function doesFlightHaveActiveReservations(flightID) {
       }
     });
 }
+
 
 module.exports = router;
