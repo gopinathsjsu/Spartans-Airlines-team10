@@ -4,22 +4,28 @@ const Flight = require("../../Models/FlightsModel.js");
 const Reservations = require("../../Models/ReservationsModel.js");
 const mongodb = require("mongodb");
 
-router.delete("/:flightID", async (req, res, next) => {
+router.delete("/:flightID", async (req, res) => {
   var objID = require("mongoose").Types.ObjectId;
   const flightID = req.params.flightID;
 
-  var inputCondition = objID.isValid(flightID); // Types.ObjectId.isValid(flightID);
+  var inputCondition = objID.isValid(flightID);
   if (inputCondition) {
-    var flag = await doesFlightHaveActiveReservations(flightID);
+    try{
 
+    }catch(error){
+      console.log(error)
+    }
+    const existingReservation = await doesFlightHaveActiveReservations(flightID);
+    console.log("This is the exisiting reservation", existingReservation);
     if (existingReservation) {
       return res.status(400).json({
-        message: "Flight has active reservations",
-      });
+        message: "Flight has active reservations"
+      })
+      
     } else {
       Flight.findById({ _id: new mongodb.ObjectId(flightID) }).then(
         (flight) => {
-          console.log("This is the flight", flight);
+          
           if (flight) {
             Flight.deleteOne(
               { _id: new mongodb.ObjectId(flightID) },
@@ -45,11 +51,11 @@ router.delete("/:flightID", async (req, res, next) => {
   } else {
     res.statusCode = 404;
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify({message: "The input's data type is unknown"}));
+    res.end(JSON.stringify({ message: "The input's data type is unknown" }));
   }
 });
 
-async function doesFlightHaveActiveReservations(flightID) {
+const doesFlightHaveActiveReservations =  async (flightID) => {
   Reservations.find({ flightID: new mongodb.ObjectId(flightID) })
     .exec()
     .then((reservation) => {
@@ -60,6 +66,5 @@ async function doesFlightHaveActiveReservations(flightID) {
       }
     });
 }
-
 
 module.exports = router;
