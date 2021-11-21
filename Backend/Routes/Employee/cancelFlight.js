@@ -21,10 +21,6 @@ router.delete("/:flightID", async (req, res) => {
           message: "Flight has active reservations",
         });
       } else {
-        // console.log("printing from useless space");
-        // return res.status(200).json({
-        //   message: "fucked",
-        // });
         Flight.findById({ _id: new mongodb.ObjectId(flightID) }).then(
           (flight) => {
             if (flight) {

@@ -10,18 +10,19 @@ router.get("/:customerID", async (req, res, next) => {
   var objID = require("mongoose").Types.ObjectId;
   const customerID = req.params.customerID;
 
-  var isIDValid = objID.isValid(customerID);
+  const isIDValid = await objID.isValid(customerID);
 
   if (isIDValid) {
-    var isCustomerValid = await checkCustomerValidity(customerID);
+    const isCustomerValid = await checkCustomerValidity(customerID);
     if (isCustomerValid) {
       console.log("this is a return", isCustomerValid);
 
       Reservation.find({ customerID: new mongodb.ObjectId(customerID) })
         .exec()
-        .then((reservation) => {
+        .then((error, reservation) => {
           if (reservation) {
             res.status(200).json({
+              message: "The customer has reservation history",
               response: reservation,
             });
           } else {
@@ -42,19 +43,17 @@ router.get("/:customerID", async (req, res, next) => {
   }
 });
 
-let checkCustomerValidity = async function (custID) {
+const checkCustomerValidity = async (custID) => {
   try {
-    Customer.findById(new mongodb.ObjectId(custID))
-      .exec()
-      .then((customer) => {
-        if (customer) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+    const findCustomer = await Customer.findById(new mongodb.ObjectId(custID));
+
+    if (findCustomer) {
+      return true;
+    } else {
+      return false;
+    }
   } catch (error) {
-    console.log("There is an error", error);
+    console.log("There is an error in finding the customer", error);
     throw error;
   }
 };
