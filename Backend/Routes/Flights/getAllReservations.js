@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
-// const Flight = require("../../Models/FlightsModel.js");
 const Customer = require("../../Models/CustomerModel.js");
 const Reservation = require("../../Models/ReservationsModel");
-const mongoose = require("mongoose");
 const mongodb = require("mongodb");
 
 router.get("/:customerID", async (req, res, next) => {
@@ -45,16 +43,20 @@ router.get("/:customerID", async (req, res, next) => {
 });
 
 let checkCustomerValidity = async function (custID) {
-  Customer.findById(new mongodb.ObjectId(custID))
-    .exec()
-    .then((customer) => {
-      if (customer) {
-        console.log("coming to true part");
-        return true;
-      } else {
-        return false;
-      }
-    });
-}
+  try {
+    Customer.findById(new mongodb.ObjectId(custID))
+      .exec()
+      .then((customer) => {
+        if (customer) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+  } catch (error) {
+    console.log("There is an error", error);
+    throw error;
+  }
+};
 
 module.exports = router;
