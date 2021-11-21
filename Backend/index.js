@@ -68,7 +68,8 @@ const flights = require("./Routes/Flights/flights.js");
 const reservations = require("./Routes/Flights/reservations");
 const cancelFlight = require("./Routes/Employee/cancelFlight");
 // const changeSeatResarvation = require("./Routes/Flights/changeSeat");
-const getReservations = require("./Routes/Flights/getAllReservations");
+const getReservations = require("./Routes/Customer/getAllReservations");
+const getAvailableSeats = require("./Routes/Flights/getAvailableSeats");
 
 // Route config
 app.use("/login", login);
@@ -81,6 +82,7 @@ app.use("/flights",flights);
 app.use("/reservations",reservations);
 // app.use("/reservations/changeSeat", changeSeatResarvation);
 app.use("/customer/getReservations", getReservations);
+app.use("/flights/getAvailableSeats", getAvailableSeats);
 
 app.use((req, res, next) => {
   const error = new Error("Route Not found");
