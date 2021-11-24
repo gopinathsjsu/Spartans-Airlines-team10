@@ -106,22 +106,27 @@ router.post("/", (req, res, next) => {
         mileagePoints = req.body.mileagePoints;
 
         rows = Math.ceil(capacity / 6);
+        console.log("number of rows", rows);
 
         const alpha = Array.from(Array(rows)).map((e, i) => i + 65);
         const alphabet = alpha.map((x) => String.fromCharCode(x));
-
+        var seatFlag = 0;
         var seats = [];
-        for (i = 1; i <= rows; i++) {
+        for (i = 0; i < rows; i++) {
           for (j = 1; j <= 6; j++) {
-            obj = {
-              seatID: alphabet[i],
-              seatNumber: j,
-              status: "A",
-            };
-            seats.push(obj);
+            if (seatFlag == capacity) {
+              break;
+            } else {
+              obj = {
+                seatID: alphabet[i],
+                seatNumber: j,
+                status: "A",
+              };
+              seats.push(obj);
+              seatFlag++;
+            }
           }
         }
-
 
         const flight = new Flight({
           _id: new mongoose.Types.ObjectId(),
