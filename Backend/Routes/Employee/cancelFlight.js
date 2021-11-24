@@ -27,7 +27,7 @@ router.delete("/:flightID", async (req, res) => {
               Flight.deleteOne(
                 { _id: new mongodb.ObjectId(flightID) },
 
-                function (err, resdata) {
+                (err, resdata) => {
                   if (err) {
                     console.log(err);
                     return res.status(500).json({
