@@ -47,6 +47,9 @@ router.delete("/:flightID", async (req, res) => {
       }
     } catch (error) {
       console.log(error);
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ message: "Error occurred" }));
     }
   } else {
     res.statusCode = 404;
