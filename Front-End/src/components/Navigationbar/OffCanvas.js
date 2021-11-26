@@ -47,6 +47,16 @@ const OffCanvas = () => {
                             </Link>
                         </ListGroup.Item>
                         <ListGroup.Item>
+                            <Link
+                                className="pageLink"
+                                to={{
+                                    pathname: '/managetravelemployee',
+                                }}
+                            >
+                                <h3 className="options">Manage Travel Employee</h3>
+                            </Link>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
                             <Button id="logoutbutton" href="/" onClick={handleLogout}>
                                 <h3>Logout</h3>
                             </Button>
