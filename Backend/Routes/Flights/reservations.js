@@ -124,6 +124,75 @@ router.post("/", async (req, res) => {
     }
 });
 
+//This API is to cancel a reservation
+router.put("/cancelReservation", async (req, res) => {
+    console.log("Inside cancel reservation");
+    const session = await mongoose.startSession();
+    try {
+        session.startTransaction();
+        const opts = {session};
+        const reservationID = mongoose.Types.ObjectId(req.body.reservationID);
+        const customerID = mongoose.Types.ObjectId(req.body.customerID);
+        let returnPoints = 0;
+        let flightID = "";
+        
+        //check if payment is made using mileage points
+        const reservationDetails = await Reservations.findOne({_id: reservationID}, null, opts)
+        if (reservationDetails != null) {
+            flightID = reservationDetails.flightID;
+            if (reservationDetails.paymentMode == "mileagePoints") {
+                returnPoints = reservationDetails.mileagePointsPaid;
+            }
+        } else {
+            error = {
+                code: 404,
+                message: "Reservation details not found"
+            }
+            throw error;
+        }
+        //get mileage added for the flight
+        const addMileagePoints = await getMileagePoints(flightID, opts);
+        returnPoints -= addMileagePoints;
+
+        //1)update reservation status as "cancelled" in reservation table
+        const updateReservation = await Reservations.updateOne(
+            {_id: reservationID},
+            {$set:{status:"cancelled"}},opts)
+
+        //2) update mileage points for customer and remove reservation id from customer's list of reservations
+
+        const update = {
+            //$pull: {reservations: reservationID},
+            $inc: {rewardPoints: returnPoints},
+        };
+
+        const customerUpdate = await Customers.updateOne({_id: customerID,}, update, opts);                                                                                                       
+
+        //3) update seats as 'A' in flights table and increase seats left count
+        const flightDetails = await updateFlightForCancelReservation(flightID, reservationDetails.numOfPassengers, reservationDetails.passengers, opts);
+
+        res.setHeader("Content-Type", "application/json");
+        res.status(200).json({
+            status:200,
+            message: "The reservation has been cancelled successfully",
+          });
+
+        //commit transaction
+        await session.commitTransaction()
+
+    } catch (e) {
+        console.log('rolled back')
+        await session.abortTransaction()
+        const error = {
+            status: 400,
+            message: e.message,
+        };
+        res.end(JSON.stringify(error));
+    } finally {
+        await session.endSession()
+    }
+});
+
 //Get mileage points for adding when a flight is reserved
 const getMileagePoints = async (flightID, opts) => {
     try {
@@ -182,4 +251,27 @@ const updateFlightForReservation = async (flightID, numOfPassengers, passengerLi
     }
 }
 
+//Update the seats occupied and increase the seats left count for cancel reservation
+const updateFlightForCancelReservation = async (flightID, numOfPassengers, passengerList, opts) => {
+    try {
+        const flightDetails = await getFlightDetails(flightID, opts);
+        let success;
+        if (flightDetails != null) {
+            await Flight.updateOne({_id: flightID},
+                {$set: {seatsLeft: flightDetails.seatsLeft + numOfPassengers}})
+
+            for (const value of passengerList) {
+                const index = passengerList.indexOf(value);
+                success = await Flight.updateOne({
+                        _id: flightID,
+                        seats: {$elemMatch: {seatNumber: value.seatNumber, seatID: value.seatID}}
+                    },
+                    {$set: {"seats.$.status": "A"}}
+                );
+            }
+        }
+    } catch (e) {
+        throw e;
+    }
+}
 module.exports = router;
