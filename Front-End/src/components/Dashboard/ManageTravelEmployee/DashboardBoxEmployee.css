@@ -1,0 +1,13 @@
+#heading {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#tabs {
+    margin-top: 50px;
+    border-style: solid;
+    border-color:#D4D4D4;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+}
