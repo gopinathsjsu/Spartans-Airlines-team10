@@ -51,7 +51,8 @@ const CustomerLogin = () => {
                 onLogin(response.data)
                 setRedirectFlag(true)
             })
-            .catch(() => {
+            .catch((e) => {
+                console.log(e)
                 invalidLogin()
             })
     }
