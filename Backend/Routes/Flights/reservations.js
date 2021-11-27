@@ -6,8 +6,15 @@ const Customers = require("../../Models/CustomerModel");
 const Flight = require("../../Models/FlightsModel.js");
 
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 
-router.post("/", async (req, res) => {
+router.post("/", 
+body('flightID').isAlphanumeric(),
+body('customerID').isAlphanumeric(),
+body('numOfPassengers').isNumeric(),
+body('paymentMode').isAlpha(),
+body('cvv').isNumeric(),
+async (req, res) => {
     console.log("Inside make reservations");
     const session = await mongoose.startSession();
     try {
@@ -125,7 +132,10 @@ router.post("/", async (req, res) => {
 });
 
 //This API is to cancel a reservation
-router.put("/cancelReservation", async (req, res) => {
+router.put("/cancelReservation", 
+body('reservationID').isAlphanumeric(),
+body('customerID').isAlphanumeric(),
+async (req, res) => {
     console.log("Inside cancel reservation");
     const session = await mongoose.startSession();
     try {

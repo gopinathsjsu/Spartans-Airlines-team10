@@ -4,10 +4,21 @@ const mongoose = require("mongoose");
 const Flight = require("../../Models/FlightsModel.js");
 
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 
 //Search flight
-router.get("/", (req, res) => {
+router.get("/", 
+body('originCode').isAlpha(),
+body('destinationCode').isAlpha(),
+body('numOfSeats').isNumeric(),
+(req, res) => {
     console.log("Inside search flights");
+    const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.setHeader("Content-Type", "application/json");
+    return res.status(400).json({ errors: errors.array() });
+  }
     const {originCode,destinationCode, departureDate,numOfSeats} = req.body;
     let start = new Date(departureDate);
     let end = new Date(departureDate);
