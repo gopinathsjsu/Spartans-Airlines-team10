@@ -61,6 +61,7 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
 // Routing
 const login = require("./Routes/Customer/Login.js");
 const signUp = require("./Routes/Customer/Signup.js");
+const employeeLogin = require("./Routes/Employee/login.js");
 const profile = require("./Routes/Profile/Profile.js");
 const addFlightRoutes = require("./Routes/Employee/addFlight");
 const editFlight = require("./Routes/Employee/editFlight");
@@ -74,12 +75,13 @@ const getAvailableSeats = require("./Routes/Flights/getAvailableSeats");
 // Route config
 app.use("/login", login);
 app.use("/signup", signUp);
+app.use("/employee/login", employeeLogin);
 app.use("/profile", profile);
 app.use("/employee/addFlight", addFlightRoutes);
 app.use("/employee/editFlight", editFlight);
 app.use("/employee/cancelFlight", cancelFlight);
-app.use("/flights",flights);
-app.use("/reservations",reservations);
+app.use("/flights", flights);
+app.use("/reservations", reservations);
 app.use("/reservations/changeSeat", changeSeatResarvation);
 app.use("/customer/getReservations", getReservations);
 app.use("/flights/getAvailableSeats", getAvailableSeats);
