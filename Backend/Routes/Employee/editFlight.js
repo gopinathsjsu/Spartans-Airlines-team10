@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Flight = require("../../Models/FlightsModel.js");
-const { param, validationResult } = require("express-validator");
+const { check, validationResult } = require("express-validator");
 
 router.put(
   "/:flightNumber/:price?/:mileagePoints?",
-  param("flightNumber").isAlphanumeric(),
-  param("price").isNumeric(),
-  price("mileagePoints").isNumeric(),
+  check("flightNumber").isAlphanumeric(),
+  check('price').optional({checkFalsy: true, nullable: true}).isNumeric(),
+  check('mileagePoints').optional({checkFalsy: true, nullable: true}).isNumeric(),
   (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
