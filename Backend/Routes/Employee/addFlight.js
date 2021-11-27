@@ -19,6 +19,7 @@ router.post(
   body("flightNumber").isAlphanumeric(),
   body("carrier").isAlpha(),
   body("destination").isAlpha(),
+  body("origin").isAlpha(),
   body("originCode").isAlphanumeric(),
   body("destinationCode").isAlphanumeric(),
   body("price").isNumeric(),
@@ -27,6 +28,12 @@ router.post(
   body("mileagePoints").isNumeric(),
 
   (req, res) => {
+    let errorsFromValidation = validationResult(req);
+    if (!errorsFromValidation.isEmpty()) {
+      res.status(400).json({
+        errors: errorsFromValidation.array(),
+      });
+    }
     var depDate = req.body.depDate;
     var arrDate = req.body.arrDate;
     var depMonth = req.body.depMonth;
