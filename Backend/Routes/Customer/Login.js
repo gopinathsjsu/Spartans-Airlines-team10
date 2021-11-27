@@ -3,10 +3,19 @@ const bcrypt = require("bcrypt");
 const Customers = require("../../Models/CustomerModel");
 
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 
-router.post("/", (req, res) => {
+router.post("/",
+ body("emailID").isEmail(),
+ body('password').isLength({ min: 8 }),
+ (req, res) => {
   console.log("Inside login");
-  console.log("Req Body : ", req.body);
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.setHeader("Content-Type", "application/json");
+    return res.status(400).json({ errors: errors.array() });
+  }
 
   // Login validation
   Customers.findOne({ emailID: req.body.emailID }, (error, data) => {
