@@ -11,7 +11,7 @@ router.put(
   body("customerID").isAlphanumeric(),
   body("reservationID").isAlphanumeric(),
   body("passengers.*.passengerID").isAlphanumeric(),
-  body("passengers.*.seatID").isAlpha(),
+  body("passengers.*.seatID").isAlpha('en-US', {ignore: ' '}),
   body("passengers.*.seatNumber").isNumeric(),
   async (req, res) => {
     let errorsFromValidation = validationResult(req);
