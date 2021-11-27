@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-
 const Employee = require("../../Models/EmployeeModel");
-
 const bcrypt = require("bcrypt");
-
 const { body, validationResult } = require("express-validator");
+
 router.post(
   "/",
   body("firstName").isLength({ max: 30 }),
@@ -15,7 +13,7 @@ router.post(
   (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
-      res.status(400).json({
+      return res.status(400).json({
         errors: errorsFromValidation.array(),
       });
     }
@@ -51,7 +49,7 @@ router.post(
                     path: "/",
                   });
                   console.log(result);
-                  res.status(201).json({
+                  return res.status(200).json({
                     message: "Employee created",
                   });
                 })

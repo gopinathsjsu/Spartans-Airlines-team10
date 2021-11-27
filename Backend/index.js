@@ -65,7 +65,7 @@ mongoose.set("debug", (collectionName, method, query, doc) => {
 const login = require("./Routes/Customer/Login.js");
 const signUp = require("./Routes/Customer/Signup.js");
 const employeeLogin = require("./Routes/Employee/login");
-// const employeeSignup = require("./Routes/Employee/signup");
+const employeeSignup = require("./Routes/Employee/signup");
 const profile = require("./Routes/Profile/Profile.js");
 const addFlightRoutes = require("./Routes/Employee/addFlight");
 const editFlight = require("./Routes/Employee/editFlight");
@@ -80,7 +80,7 @@ const getAvailableSeats = require("./Routes/Flights/getAvailableSeats");
 app.use("/login", login);
 app.use("/signup", signUp);
 app.use("/employee/login", employeeLogin);
-// app.use("/employee/signup", employeeSignup);
+app.use("/employee/signup", employeeSignup);
 app.use("/profile", profile);
 app.use("/employee/addFlight", addFlightRoutes);
 app.use("/employee/editFlight", editFlight);

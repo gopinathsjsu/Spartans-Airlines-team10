@@ -11,7 +11,7 @@ router.put(
   (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
-      res.status(400).json({
+      return res.status(400).json({
         errors: errorsFromValidation.array(),
       });
     }
