@@ -14,10 +14,11 @@ router.post(
   (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
-      res.status(400).json({
+      return res.status(400).json({
         errors: errorsFromValidation.array(),
       });
     }
+
     Employee.find({ emailID: req.body.emailID })
       .exec()
       .then((employee) => {
@@ -47,8 +48,8 @@ router.post(
               });
               req.session.employee = result;
               res.setHeader("Content-Type", "application/json");
-              res.status(200);
-              result.status = 200;
+              // res.status(200);
+              res.status = 200;
               return res.status(200).json({
                 message: "Auth successful",
               });
@@ -66,6 +67,10 @@ router.post(
           error: err,
         });
       });
+
+    // else {
+
+    // }
   }
 );
 

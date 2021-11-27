@@ -8,7 +8,7 @@ const { body, validationResult } = require('express-validator');
 router.post("/",
 body('firstName').isLength({ max:30}),
 body('lastName').isLength({ max:30}),
-body('gender').isAlpha(),
+body('gender').isAlpha('en-US', {ignore: ' '}),
 body('emailID').isEmail(),
 body('password').isLength({min:8}),
 body('phoneNum').isMobilePhone(),

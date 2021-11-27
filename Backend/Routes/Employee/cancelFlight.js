@@ -6,7 +6,7 @@ const mongodb = require("mongodb");
 const { param, validationResult } = require("express-validator");
 router.delete(
   "/:flightID",
-  param("flightID").isAlphanumeric,
+  param("flightID").isAlphanumeric(),
   async (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
