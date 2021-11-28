@@ -53,10 +53,31 @@ Shravan Vallaban <br>
 	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789664-56fb448d-d00f-4ea7-af33-0a433bec0ba7.png">
 </p>
 
+# Deployment Diagram:
+
+# Application Screenshots:
+
+# AWS Load Balancers Screenshots:
+
+# GitHub Repo Link:
+
+https://github.com/gopinathsjsu/Spartans-Airlines-team10
 
 # Scrum Meeting Schedule:
 Wednesday  <br>
 Friday
+
+# Weekly Scrum Report:
+
+# Project Dashboard:
+
+# Task Sheet & Burndown charts:
+
+# Areas of contribution:
+* We divided our work as two categories, Frontend and Backend application development:
+
+   * Frontend Application design, implementation and deployments - Shakthivel Ramesh Nirmala and Saurabh Vijaywargia
+   * Backend Application design, implementation and deployments - Divya Mohan and Shravan Vallaban
 
 # Extreme programming (XP) Core Values Implemented:
  * Communication
