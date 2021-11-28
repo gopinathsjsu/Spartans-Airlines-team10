@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import PassengerInformation from './PassengerInformation'
-
+import PaymentModal from './Payment/PaymentModal'
 
 const AccordianBody = () => {
 
@@ -10,12 +10,16 @@ const AccordianBody = () => {
 
     for (let i = 0; i < numberOfPassengers; i++) {
         passengersInput.push(
-            <PassengerInformation />
+            <div>
+                <PassengerInformation />
+            </div>
         )
     }
     return (
         <div>
             {passengersInput}
+            <br />
+            <PaymentModal />
         </div>
     )
 }

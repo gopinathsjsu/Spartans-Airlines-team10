@@ -1,9 +1,6 @@
 import AccordianHeader from './AccordianHeader'
 import AccordianBody from './AccordianBody'
 import { Accordion } from 'react-bootstrap'
-import {
-    Form
-} from 'react-bootstrap';
 import './FlightInformation.css'
 
 

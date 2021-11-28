@@ -20,7 +20,7 @@ const AccordianHeader = (props) => {
                 <Col>Departure Time: {departureDate.toLocaleTimeString()}</Col>
             </Row>
             <Row>
-                <Col>Arrival Date: {arrivalDate.toDateString()}</Col>
+                <Col>Arrival Date: {arrivalDate.toLocaleDateString()}</Col>
                 <Col>Arrival Time: {arrivalDate.toLocaleTimeString()}</Col>
             </Row>
             <Row>
