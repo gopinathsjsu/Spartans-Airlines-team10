@@ -55,6 +55,8 @@ Shravan Vallaban <br>
 
 # Deployment Diagram:
 
+# Design Decisions:
+
 # Application Screenshots:
 
 # AWS Load Balancers Screenshots:
