@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    flightID: '',
     passengerList: [],
     passengerCount: 0,
     availableSeats: [],
@@ -13,9 +12,6 @@ const bookFlightSlice = createSlice({
     name: 'bookFlightSlice',
     initialState: initialState,
     reducers: {
-        setFlightID(state, action) {
-            state.flightID = action.payload
-        },
         setAvailableSeats(state, action) {
             state.availableSeats = action.payload
         },

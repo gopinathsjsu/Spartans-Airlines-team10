@@ -20,10 +20,25 @@ const BookFlight = () => {
     const bookFlightFlag = useSelector(state => state.bookFlightSlice.bookFlightFlag)
 
     useEffect(() => {
+        console.log('Click')
         getFlightDetails()
     })
 
     const getFlightDetails = async () => {
+        const passengerAdded = () => toast.success('Passenger Added Succesfully')
+
+        if (addedPassengerFlag) {
+            passengerAdded()
+            dispatch(bookFlightActions.setAddedPassengerFlag(false))
+        }
+
+        const passengerFieldsIncomplete = () => toast.error('Please Provide Details Of All Passengers')
+
+        if (bookFlightFlag) {
+            passengerFieldsIncomplete()
+            dispatch(bookFlightActions.setBookFlightFlag(false))
+        }
+        
         try {
             const res = await axios.get(`http://localhost:3001/flights`, { params: { originCode, destinationCode, departureDate, numOfSeats } })
             dispatch(searchFlightActions.setAvailableFlights(res.data))
@@ -32,21 +47,7 @@ const BookFlight = () => {
         }
     }
 
-    const passengerAdded = () => toast.success('Passenger Added Succesfully')
-    
-    if (addedPassengerFlag) {
-        passengerAdded()
-        dispatch(bookFlightActions.setAddedPassengerFlag(false))
-    }
 
-    
-    const passengerFieldsIncomplete = () => toast.error('Please Provide Details Of All Passengers')
-
-    if (bookFlightFlag) {
-        passengerFieldsIncomplete()
-        dispatch(bookFlightActions.setBookFlightFlag(false))
-
-    }
 
     return (
         <div>
