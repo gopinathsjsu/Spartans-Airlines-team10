@@ -1,16 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    firstname: '',
-    lastname: '',
-    address: '',
-    phonenumber: '',
-    gender: '',
-    dob: new Date().toISOString(),
-    email: '',
-    password: '',
-	
-	flightnumber: '',	
+    flightnumber: '',	
     carrier:'',
     origin: '',
     origincode: '',
@@ -35,39 +26,12 @@ const initialState = {
     flightid: '',
 }
 
-const mainSlice = createSlice({
-    name: 'mainslice',
+const addFlightSlice = createSlice({
+    name: 'addflightslice',
     initialState: initialState,
     reducers: {
-        setFirstName(state, action) {
-            state.firstname = action.payload
-        },
-        setLastName(state, action) {
-            state.lastname = action.payload
-        },
-        setAddress(state, action) {
-            state.address = action.payload
-        },
-        setPhoneNumber(state, action) {
-            state.phonenumber = action.payload
-        },
-        setGender(state, action) {
-            state.gender = action.payload
-        },
-        setDob(state, action) {
-            state.dob = action.payload
-        },
-        setEmail(state, action) {
-            state.email = action.payload
-        },
-        setPassword(state, action) {
-            state.password = action.payload
-        },
-		setFlightNumber(state, action){state.flightnumber= action.payload},
-        setCarrier(state,action){
-            console.log("Setting carrier");
-            console.log(state.carrier);
-        state.carrier= action.payload},
+        setFlightNumber(state, action){state.flightnumber= action.payload},
+        setcarrier(state,action){state.carrier= action.payload},
         setOrigin(state, action){state.origin= action.payload},
         setOriginCode(state, action){state.origincode= action.payload},
         setDestination(state, action){state.destination= action.payload},
@@ -92,9 +56,9 @@ const mainSlice = createSlice({
         //setSeats(state, action){state.seats= action.payload},
         setPrice(state, action){state.price= action.payload},
 
-        setFlightId(state, action){state.flightid= action.payload},
+        setFlightId(state, action){state.flightId= action.payload},
     }
 });
 
-export const mainSliceActions = mainSlice.actions;
-export const mainSliceReducers = mainSlice.reducer
+export const addFlightSliceActions = addFlightSlice.actions;
+export const addFlightSliceReducers = addFlightSlice.reducer
