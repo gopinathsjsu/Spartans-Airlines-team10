@@ -26,7 +26,7 @@ router.delete(
         );
         console.log("This is the exisiting reservation", existingReservation);
         if (existingReservation) {
-          return res.status(400).json({
+          return res.status(200).json({
             message: "Flight has active reservations",
           });
         } else {
@@ -58,7 +58,7 @@ router.delete(
         console.log(error);
         res.statusCode = 404;
         res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({ message: "Error occurred" }));
+        res.end(JSON.stringify({ message: "Error occurred since the flight may have been deleted" }));
       }
     } else {
       res.statusCode = 404;
@@ -74,10 +74,11 @@ async function doesFlightHaveActiveReservations(flightID) {
       flightID: new mongodb.ObjectId(flightID),
     });
     console.log("the reservation is", reservation);
-    if (reservation) {
-      return true;
-    } else {
+    console.log(reservation==[])
+    if (reservation.length===0) {
       return false;
+    } else {
+      return true;
     }
   } catch (error) {
     console.log(error);
