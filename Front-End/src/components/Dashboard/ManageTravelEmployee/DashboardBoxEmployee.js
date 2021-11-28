@@ -23,14 +23,14 @@ const DashboardBoxEmployee = () => {
                 <div id="tabs">
                     <Tabs defaultActiveKey="Editflight" className="mb-3">
                         <Tab eventKey="Editflight" title="Edit Flight">
-                            <AddFlight />
+                            <EditFlight />
                         </Tab>
                     </Tabs>
                 </div>
                 <div id="tabs">
                     <Tabs defaultActiveKey="Cancelflight" className="mb-3">
-                        <Tab eventKey="CAncelflight" title="Cancel Flight">
-                            <AddFlight />
+                        <Tab eventKey="Cancelflight" title="Cancel Flight">
+                            <CancelFlight />
                         </Tab>
                     </Tabs>
                 </div>
