@@ -5,7 +5,6 @@ import {
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { bookFlightActions } from '../../../../store/bookFlightSlice'
-import toast, { Toaster } from 'react-hot-toast';
 
 const PassengerInformation = (props) => {
     const dispatch = useDispatch()
@@ -48,14 +47,13 @@ const PassengerInformation = (props) => {
         if (passengerCount < numberOfPassengers) {
             dispatch(bookFlightActions.incrementPassengerCount())
         }
-        passengerAdded()
+        dispatch(bookFlightActions.setAddedPassengerFlag(true))
     }
 
-    const passengerAdded = () => toast.success('Passenger Added Succesfully')
+    
 
     return (
         <div>
-            <Toaster />
             <div style={{ marginTop: '10px' }}>
                 <Form id="book-flight-form" method="post" onSubmit={(e) => handleAddPassenger(e, props.index)}>
                     <Row>

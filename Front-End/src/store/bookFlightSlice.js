@@ -4,7 +4,9 @@ const initialState = {
     flightID: '',
     passengerList: [],
     passengerCount: 0,
-    availableSeats: []
+    availableSeats: [],
+    addedPassengerFlag: false,
+    bookFlightFlag: false
 }
 
 const bookFlightSlice = createSlice({
@@ -24,13 +26,22 @@ const bookFlightSlice = createSlice({
         incrementPassengerCount(state) {
             state.passengerCount += 1
         },
+        resetPassengerCount(state) {
+            state.passengerCount = 0
+        },
         setPassengerList(state, action) {
             const numberOfPassengers = action.payload
             state.passengerList = []
             for (let i = 0; i < numberOfPassengers; i++) {
                 state.passengerList.push('')
             }
-        }
+        },
+        setAddedPassengerFlag(state, action) {
+            state.addedPassengerFlag = action.payload
+        },
+        setBookFlightFlag(state, action) {
+            state.bookFlightFlag = action.payload
+        },
     }
 });
 
