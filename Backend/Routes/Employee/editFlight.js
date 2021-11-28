@@ -6,8 +6,10 @@ const { check, validationResult } = require("express-validator");
 router.put(
   "/:flightNumber/:price?/:mileagePoints?",
   check("flightNumber").isAlphanumeric(),
-  check('price').optional({checkFalsy: true, nullable: true}).isNumeric(),
-  check('mileagePoints').optional({checkFalsy: true, nullable: true}).isNumeric(),
+  check("price").optional({ checkFalsy: true, nullable: true }).isNumeric(),
+  check("mileagePoints")
+    .optional({ checkFalsy: true, nullable: true })
+    .isNumeric(),
   (req, res) => {
     let errorsFromValidation = validationResult(req);
     if (!errorsFromValidation.isEmpty()) {
@@ -26,8 +28,12 @@ router.put(
       parameters["mileagePoints"] = req.params.mileagePoints;
     }
     console.log(parameters);
+    
     Flight.updateMany(
-      { flightNumber: req.params.flightNumber },
+      {
+        flightNumber: req.params.flightNumber,
+        departureDate: { $gt: currTime.toISOString() },
+      },
       { $set: parameters },
       function (err, resdata) {
         if (err) {
