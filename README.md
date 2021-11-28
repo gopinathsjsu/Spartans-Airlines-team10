@@ -18,6 +18,42 @@ Shravan Vallaban <br>
    * Google Sheet - Tracking tasks and sprint burndown charts
    * Zoom - Team collaboration (Organizing daily scrum meetings)
 
+# Architechture Diagram:
+
+<p align="center">
+	<img width="900" src="https://user-images.githubusercontent.com/77031080/143789168-cf8b0fda-afee-47f0-b891-c3ad099c5a53.png">
+</p>
+
+# UI Wireframes:
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789346-ccea2995-c456-494a-a616-295056e4efbc.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789467-6f78e2aa-85bf-4e29-860f-c3321fcd472f.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789494-79ec5397-1214-44e8-856e-5bcec5c2a9f7.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789551-af2d07aa-a277-43ce-b12b-eaf5e7e0400e.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789591-17499473-46ad-4b99-99cb-2d5c9067fdf8.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789620-9168f455-af25-455c-9339-396bc7ce81bd.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789647-044f75d1-4255-44f2-a509-d4d0b83e2d18.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789683-73e07f8b-ef89-439f-8a41-eea7a8437c64.png">
+</p>
+<p>
+	<img height="400" width="700" src="https://user-images.githubusercontent.com/77031080/143789664-56fb448d-d00f-4ea7-af33-0a433bec0ba7.png">
+</p>
+
+
 # Scrum Meeting Schedule:
 Wednesday  <br>
 Friday
@@ -41,13 +77,7 @@ Friday
        * During the development phase we pushed our changes to a branch and created pull requests. Once the code was approved by another team member, we pushed the changes to the master branch. We made sure the code changes on the master branch was always stable and did not break the other team member’s code.
        * Continuous feedback helped us in aligning our goals and responsibilities.
 
-# Architechture Diagram:
 
-<p align="center">
-	<img width="900" src="https://user-images.githubusercontent.com/77031080/143789168-cf8b0fda-afee-47f0-b891-c3ad099c5a53.png">
-</p>
-
-# UI Wireframes:
 
 
 
