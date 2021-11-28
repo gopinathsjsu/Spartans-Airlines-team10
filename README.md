@@ -18,7 +18,7 @@ Shravan Vallaban <br>
    * Google Sheet - Tracking tasks and sprint burndown charts
    * Zoom - Team collaboration (Organizing daily scrum meetings)
 
-# Scrum Meeting S chedule:
+# Scrum Meeting Schedule:
 Wednesday  <br>
 Friday
 
@@ -42,6 +42,10 @@ Friday
        * Continuous feedback helped us in aligning our goals and responsibilities.
 
 # Architechture Diagram:
+
+<p align="center">
+	<img width="900" src="https://user-images.githubusercontent.com/77031080/143789168-cf8b0fda-afee-47f0-b891-c3ad099c5a53.png">
+</p>
 
 # UI Wireframes:
 
