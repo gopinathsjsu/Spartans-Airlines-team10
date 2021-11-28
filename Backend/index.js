@@ -75,7 +75,7 @@ const cancelFlight = require("./Routes/Employee/cancelFlight");
 const changeSeatResarvation = require("./Routes/Flights/changeSeat");
 const getReservations = require("./Routes/Customer/getAllReservations");
 const getAvailableSeats = require("./Routes/Flights/getAvailableSeats");
-
+const getUpcomingFlights = require("./Routes/Employee/getUpcomingFlights");
 // Route config
 app.use("/login", login);
 app.use("/signup", signUp);
@@ -86,6 +86,7 @@ app.use("/employee/addFlight", addFlightRoutes);
 app.use("/employee/editFlight", editFlight);
 app.use("/employee/cancelFlight", cancelFlight);
 app.use("/flights", flights);
+app.use("/employee/getUpcomingFlights", getUpcomingFlights);
 app.use("/reservations", reservations);
 app.use("/reservations/changeSeat", changeSeatResarvation);
 app.use("/customer/getReservations", getReservations);

@@ -62,7 +62,7 @@ router.post(
       Flight.find({
         flightNumber: req.body.flightNumber,
         arrivalDate: { $gte: depdate.toISOString() },
-        depDate: { $lte: depdate.toISOString() },
+        departureDate: { $lte: depdate.toISOString() },
       })
         .exec()
         .then((flight) => {

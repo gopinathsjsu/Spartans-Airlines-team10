@@ -29,7 +29,7 @@ router.get(
 
         Reservation.find({ customerID: new mongodb.ObjectId(customerID) })
           .exec()
-          .then((error, reservation) => {
+          .then((reservation, error) => {
             if (reservation) {
               res.status(200).json({
                 message: "The customer has reservation history",
