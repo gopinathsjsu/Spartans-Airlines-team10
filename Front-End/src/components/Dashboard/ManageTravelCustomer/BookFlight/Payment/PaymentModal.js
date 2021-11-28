@@ -4,6 +4,7 @@ import MileagePointsPayment from './MileagePointsPayment'
 import {
     Button, Modal,
 } from 'react-bootstrap';
+import toast, { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
 import { useSelector } from 'react-redux'
 
@@ -11,12 +12,23 @@ const PaymentModal = (props) => {
     const [show, setShow] = useState(false);
     const isCreditCard = useSelector(state => state.paymentFlightSlice.isCreditCard)
     const isMileagePoints = useSelector(state => state.paymentFlightSlice.isMileagePoints)
+    const numberOfPassengers = useSelector(state => state.searchFlightSlice.numberOfPassengers)
+    const passengerCount = useSelector(state => state.bookFlightSlice.passengerCount)
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        if (passengerCount === Number(numberOfPassengers)) {
+            setShow(true);
+        } else {
+            passengerFieldsIncomplete()
+        }
+    }
+
+    const passengerFieldsIncomplete = () => toast.error('Please Provide Details Of All Passengers')
 
     return (
         <div>
+            <Toaster />
             <Button variant="primary" onClick={handleShow}>
                 Book Flight
             </Button>

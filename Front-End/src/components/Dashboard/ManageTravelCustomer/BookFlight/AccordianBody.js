@@ -10,8 +10,8 @@ const AccordianBody = () => {
 
     for (let i = 0; i < numberOfPassengers; i++) {
         passengersInput.push(
-            <div>
-                <PassengerInformation />
+            <div key={i}>
+                <PassengerInformation index={i} />
             </div>
         )
     }

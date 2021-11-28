@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     flightID: '',
     passengerList: [],
+    passengerCount: 0,
     availableSeats: []
 }
 
@@ -17,8 +18,19 @@ const bookFlightSlice = createSlice({
             state.availableSeats = action.payload
         },
         addPassenger(state, action) {
-            state.passengerList.push(action.payload)
+            const index = action.payload.index
+            state.passengerList[index] = action.payload.passengerInformation
         },
+        incrementPassengerCount(state) {
+            state.passengerCount += 1
+        },
+        setPassengerList(state, action) {
+            const numberOfPassengers = action.payload
+
+            for (let i = 0; i < numberOfPassengers; i++) {
+                state.passengerList.push('')
+            }
+        }
     }
 });
 

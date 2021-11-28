@@ -1,13 +1,22 @@
 import FlightInformation from './FlightInformation'
-import { useSelector } from 'react-redux'
+import { bookFlightActions } from '../../../../store/bookFlightSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { Accordion, Container } from 'react-bootstrap'
+import { useEffect } from 'react'
 
 const FlightsDetails = () => {
+    const dispatch = useDispatch()
     let eventKey = 0
     const availableFlights = useSelector(state => state.searchFlightSlice.availableFlights)
+    const numberOfPassengers = useSelector(state => state.searchFlightSlice.numberOfPassengers)
+    
+    useEffect(() => {
+        dispatch(bookFlightActions.setPassengerList(numberOfPassengers))
+    }, [numberOfPassengers, dispatch])
+
     const flights = []
     availableFlights.forEach((flight) => {
-        flights.push(<FlightInformation flight={flight} eventKey={eventKey} />)
+        flights.push(<FlightInformation key={eventKey} flight={flight} eventKey={eventKey} />)
         eventKey += 1
     })
 
