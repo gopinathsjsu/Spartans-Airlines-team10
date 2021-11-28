@@ -34,10 +34,10 @@ const PaymentModal = (props) => {
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Payment Mode</Modal.Title>
+                    <Modal.Title>Payment</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {isCreditCard && <CreditCardPayment />}
+                    {isCreditCard && <CreditCardPayment flight={props.flight} />}
                     {isMileagePoints && <MileagePointsPayment />}
                     {!isCreditCard && !isMileagePoints && <PaymentOptions />}
                 </Modal.Body>

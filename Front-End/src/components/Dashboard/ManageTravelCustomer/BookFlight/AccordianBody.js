@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import PassengerInformation from './PassengerInformation'
 import PaymentModal from './Payment/PaymentModal'
 
-const AccordianBody = () => {
+const AccordianBody = (props) => {
 
     let numberOfPassengers = useSelector(state => state.searchFlightSlice.numberOfPassengers)
     numberOfPassengers = Number(numberOfPassengers)
@@ -19,7 +19,7 @@ const AccordianBody = () => {
         <div>
             {passengersInput}
             <br />
-            <PaymentModal />
+            <PaymentModal flight={props.flight} />
         </div>
     )
 }

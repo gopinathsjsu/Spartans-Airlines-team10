@@ -12,7 +12,7 @@ const FlightInformation = (props) => {
                     <AccordianHeader flight={props.flight} />
                 </Accordion.Header>
                 <Accordion.Body>
-                    <AccordianBody />
+                    <AccordianBody flight={props.flight} />
                 </Accordion.Body>
             </Accordion.Item>
 

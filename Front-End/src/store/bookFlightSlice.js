@@ -26,7 +26,7 @@ const bookFlightSlice = createSlice({
         },
         setPassengerList(state, action) {
             const numberOfPassengers = action.payload
-
+            state.passengerList = []
             for (let i = 0; i < numberOfPassengers; i++) {
                 state.passengerList.push('')
             }

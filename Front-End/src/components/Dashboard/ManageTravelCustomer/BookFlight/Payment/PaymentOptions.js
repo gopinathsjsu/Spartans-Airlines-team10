@@ -19,6 +19,7 @@ const PaymentOptions = () => {
 
     return (
         <div>
+            <p>Select your payment mode</p>
             <Row>
                 <Col style={{ textAlign: "center" }}>
                     <Button variant="primary" onClick={onClickCreditCard}>
