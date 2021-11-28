@@ -74,7 +74,6 @@ async function doesFlightHaveActiveReservations(flightID) {
       flightID: new mongodb.ObjectId(flightID),
     });
     console.log("the reservation is", reservation);
-    console.log(reservation==[])
     if (reservation.length===0) {
       return false;
     } else {
