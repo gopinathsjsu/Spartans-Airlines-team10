@@ -12,6 +12,7 @@ Backend - ExpressJS <br>
 Database - MongoDB <br>
 Cloud - AWS
 Load Balancer - Elastic Load Balancer
+Postman - API Testing
 
 # Scrum Meeting Schedule:
 Wednesday  <br>
