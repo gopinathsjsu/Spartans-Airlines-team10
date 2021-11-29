@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Customer = require("../../Models/CustomerModel.js");
 const Reservation = require("../../Models/ReservationsModel");
+const Flights = require("../../Models/FlightsModel");
 const mongodb = require("mongodb");
 const { param, validationResult } = require("express-validator");
 
@@ -29,16 +30,32 @@ router.get(
         var currTime = new Date();
         Reservation.find({
           customerID: new mongodb.ObjectId(customerID),
-          reservationDate: { $gt: currTime.toISOString() },
+          // reservationDate: { $gt: currTime.toISOString() },
           status: "upcoming"
         })
           .exec()
-          .then((reservation, error) => {
-            if (reservation) {
-              res.status(200).json({
-                message: "The customer has upcoming reservations",
-                response: reservation,
-              });
+          .then((reservations, error) => {
+            if (reservations) {
+              var flightIds = []
+              for(obj in reservations){
+                flightIds.push(reservations[obj].flightID);
+              }
+              Flights.find({flightID: flightIds, departureDate: {$gt: currTime.toISOString()}})
+              .exec()
+              .then((flight, err)=>{
+                if(flight){
+                  res.status(200).json({
+                    message: "The customer has upcoming reservations and their flight details are listed below",
+                    response: flight,
+                  });
+                }
+                else{
+                  res.status(200).json({
+                    message: "The customer's  has not upcoming reservation",
+                  });
+                }
+              })
+              
             } else {
               res.status(200).json({
                 message: "The customer's  has not upcoming reservation",
