@@ -9,6 +9,7 @@ const initialState = {
     dob: new Date().toISOString(),
     email: '',
     password: '',
+<<<<<<< HEAD
 	
 	flightnumber: '',	
     carrier:'',
@@ -33,6 +34,9 @@ const initialState = {
 
 
     flightid: '',
+=======
+    rewardPoints: '',
+>>>>>>> Front End: Credit Card Payment and Mileage Points Payment Feature Completed
 }
 
 const mainSlice = createSlice({
@@ -63,6 +67,7 @@ const mainSlice = createSlice({
         setPassword(state, action) {
             state.password = action.payload
         },
+<<<<<<< HEAD
 		setFlightNumber(state, action){state.flightnumber= action.payload},
         setCarrier(state,action){
             console.log("Setting carrier");
@@ -93,6 +98,11 @@ const mainSlice = createSlice({
         setPrice(state, action){state.price= action.payload},
 
         setFlightId(state, action){state.flightid= action.payload},
+=======
+        setRewardPoints(state, action) {
+            state.rewardPoints= action.payload
+        },
+>>>>>>> Front End: Credit Card Payment and Mileage Points Payment Feature Completed
     }
 });
 

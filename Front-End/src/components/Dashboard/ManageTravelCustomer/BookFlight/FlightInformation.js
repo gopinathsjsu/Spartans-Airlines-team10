@@ -13,6 +13,8 @@ const FlightInformation = (props) => {
     const numberOfPassengers = useSelector(state => state.searchFlightSlice.numberOfPassengers)
 
     const onClickAccordianHeader = async () => {
+        console.log(props.flight)
+
         dispatch(bookFlightActions.setPassengerList(numberOfPassengers))
         dispatch(bookFlightActions.resetPassengerCount())
 

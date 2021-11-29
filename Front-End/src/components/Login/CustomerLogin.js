@@ -36,6 +36,7 @@ const CustomerLogin = () => {
         dispatch(mainSliceActions.setGender(data.gender))
         dispatch(mainSliceActions.setDob(data.dob))
         dispatch(mainSliceActions.setPassword(''))
+        dispatch(mainSliceActions.setRewardPoints(data.rewardPoints))
     }
 
     const handleLogin = (event) => {

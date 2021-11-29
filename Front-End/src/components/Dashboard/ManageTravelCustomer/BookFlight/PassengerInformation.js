@@ -15,6 +15,11 @@ const PassengerInformation = (props) => {
 
     const numberOfPassengers = useSelector(state => state.searchFlightSlice.numberOfPassengers)
     const passengerCount = useSelector(state => state.bookFlightSlice.passengerCount)
+    const availableSeats = useSelector(state => state.bookFlightSlice.availableSeats)
+
+    const availableSeatsOptions = availableSeats.map((seat) => (
+        <option value={`${seat.seatID}${seat.seatNumber}`}>{`${seat.seatID}${seat.seatNumber}`}</option>
+    ))
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value)
@@ -50,7 +55,7 @@ const PassengerInformation = (props) => {
         dispatch(bookFlightActions.setAddedPassengerFlag(true))
     }
 
-    
+
 
     return (
         <div>
@@ -59,7 +64,12 @@ const PassengerInformation = (props) => {
                     <Row>
                         <Col><Form.Control type="text" placeholder="First Name" onChange={onChangeFirstName} required /></Col>
                         <Col><Form.Control type="text" placeholder="Last Name" onChange={onChangeLastName} required /></Col>
-                        <Col><Form.Control type="text" placeholder="Seat Number" onChange={onChangeSeatNumber} required /></Col>
+                        <Col>
+                            <Form.Control as="select" onChange={onChangeSeatNumber} className="my-1 mr-sm-2" custom required>
+                                <option>Choose Your Seat</option>
+                                {availableSeatsOptions}
+                            </Form.Control>
+                        </Col>
                         <Col><Button variant="primary" type="submit">
                             Add
                     </Button></Col>

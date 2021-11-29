@@ -37,7 +37,7 @@ const PaymentModal = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     {isCreditCard && <CreditCardPayment flight={props.flight} />}
-                    {isMileagePoints && <MileagePointsPayment />}
+                    {isMileagePoints && <MileagePointsPayment flight={props.flight} />}
                     {!isCreditCard && !isMileagePoints && <PaymentOptions />}
                 </Modal.Body>
                 <Modal.Footer>

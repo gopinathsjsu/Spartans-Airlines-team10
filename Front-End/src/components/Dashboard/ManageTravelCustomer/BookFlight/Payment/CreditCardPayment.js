@@ -85,25 +85,24 @@ const CreditCardPayment = (props) => {
             <Form id="credit-card-form" method="post" onSubmit={handlePayment}>
                 <p>Enter your credit card details</p>
                     <Row>
-                        <Col><Form.Control type="cardNo" name="text" placeholder="Card Number" onChange={onChangeCardNo} required /></Col>
+                        <Col><Form.Control type="text" name="cardNo" placeholder="Card Number" onChange={onChangeCardNo} required /></Col>
                     </Row>
                     <Row style={{marginTop:'10px'}}>
-                        <Col><Form.Control type="nameOnCard" name="text" placeholder="Name On The Card" onChange={onChangeNameOnCard} required /></Col>
-                        <Col><Form.Control type="billingAddress" name="text" placeholder="Address" onChange={onChangeBillingAddress} required /></Col>
+                        <Col><Form.Control type="text" name="nameOnCard" placeholder="Name On The Card" onChange={onChangeNameOnCard} required /></Col>
+                        <Col><Form.Control type="text" name="billingAddress" placeholder="Address" onChange={onChangeBillingAddress} required /></Col>
                     </Row>
                     <Row style={{marginTop:'10px'}}>
                         <Col><Form.Label>Card Expiry Date:</Form.Label></Col>
                         <Col><DatePicker selected={new Date(expiryDate)} onChange={(date) => onChangeExpiryDate(date)} /></Col>
                     </Row>
                     <Row style={{marginTop:'10px'}}>
-                        <Col><Form.Control type="cvv" name="text" placeholder="CVV" onChange={onChangeCvv} required /></Col>
-                        <Col><Form.Control type="amountPaid" name="text" placeholder={`Payment Amount: ${amountPaid}`} disabled /></Col></Row>
+                        <Col><Form.Control type="text" name="cvv" placeholder="CVV" onChange={onChangeCvv} required /></Col>
+                        <Col><Form.Control type="text" name="amountPaid" placeholder={`Payment Amount: ${amountPaid}`} disabled /></Col></Row>
                     <Row style={{marginTop:'10px'}}>
                         <Col style={{textAlign:'center'}}><Button variant="primary" onClick={onClickBack}>Back</Button></Col>
                         <Col style={{textAlign:'center'}}><Button id="paybutton" type="submit">Pay</Button></Col>
                     </Row>
             </Form>
-            
         </div>
     )
 }
