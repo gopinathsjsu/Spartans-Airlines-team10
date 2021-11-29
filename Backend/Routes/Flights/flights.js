@@ -7,19 +7,18 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
 //Search flight
-router.get("/", 
-body('originCode').isAlpha(),
-body('destinationCode').isAlpha(),
-body('numOfSeats').isNumeric(),
-(req, res) => {
+router.get("/", (req, res) => {
     console.log("Inside search flights");
     const errors = validationResult(req);
+    console.log(req.query)
+    console.log(errors)
 
   if (!errors.isEmpty()) {
     res.setHeader("Content-Type", "application/json");
     return res.status(400).json({ errors: errors.array() });
   }
-    const {originCode,destinationCode, departureDate,numOfSeats} = req.body;
+    
+    const {originCode,destinationCode, departureDate,numOfSeats} = req.query;
     let start = new Date(departureDate);
     let end = new Date(departureDate);
     end.setUTCHours(23,59,59);

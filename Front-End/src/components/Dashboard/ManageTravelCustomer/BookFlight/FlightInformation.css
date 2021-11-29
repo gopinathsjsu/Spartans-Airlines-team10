@@ -1,0 +1,7 @@
+.accordion-button collapsed {
+    display: inline-block;
+}
+
+.accordion-button {
+    display: inline-block;
+}
