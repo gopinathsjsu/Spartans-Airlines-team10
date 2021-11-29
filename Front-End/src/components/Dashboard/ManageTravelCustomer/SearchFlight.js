@@ -2,13 +2,16 @@ import {
     Col, Row, Form, Button
 } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchFlightActions } from '../../../store/searchFlightSlice'
+import { Redirect } from 'react-router-dom';
 import './SearchFlight.css'
 import "react-datepicker/dist/react-datepicker.css";
 
 const SearchFlight = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const [redirectFlag, setRedirectFlag] = useState(false)
 
     const departureDate = useSelector(state => state.searchFlightSlice.departureDate)
 
@@ -28,9 +31,15 @@ const SearchFlight = () => {
         dispatch(searchFlightActions.setNumberOfPassengers(e.target.value))
     }
 
+    const handleSearchFlight = (event) => {
+        event.preventDefault()
+        setRedirectFlag(true)
+    }
+
     return (
         <div>
-            <Form>
+            {redirectFlag ? <Redirect to="/bookflight" /> : null}
+            <Form id="search-flight-form" method="post" onSubmit={handleSearchFlight}>
                 <Row className="rows">
                     <Col>
                         <Form.Group controlId="formDepartureLocation">
@@ -50,7 +59,7 @@ const SearchFlight = () => {
                                 <Form.Label>Departure Date:</Form.Label>
                             </Col>
                             <Col>
-                                <DatePicker selected={new Date(departureDate)} onChange={(date) => onChangeDepartureDate(date)} />
+                                <DatePicker selected={new Date(departureDate)} onChange={(date) => onChangeDepartureDate(date)} showTimeSelect />
                             </Col>
                         </Row>
                     </Col>
@@ -72,7 +81,7 @@ const SearchFlight = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Button id="searchbutton">Search</Button>
+                <Button id="searchbutton" type="submit">Search</Button>
             </Form>
         </div>
     )

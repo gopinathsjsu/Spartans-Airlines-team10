@@ -33,6 +33,7 @@ const initialState = {
 
 
     flightid: '',
+    rewardPoints: '',
 }
 
 const mainSlice = createSlice({
@@ -93,6 +94,9 @@ const mainSlice = createSlice({
         setPrice(state, action){state.price= action.payload},
 
         setFlightId(state, action){state.flightid= action.payload},
+        setRewardPoints(state, action) {
+            state.rewardPoints= action.payload
+        },
     }
 });
 

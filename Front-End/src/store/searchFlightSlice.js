@@ -5,6 +5,7 @@ const initialState = {
     arrivalLocation: '',
     departureDate: new Date().toISOString(),
     numberOfPassengers: '',
+    availableFlights: []
 }
 
 const searchFlightSlice = createSlice({
@@ -23,6 +24,9 @@ const searchFlightSlice = createSlice({
         setNumberOfPassengers(state, action) {
             state.numberOfPassengers = action.payload
         },
+        setAvailableFlights(state, action) {
+            state.availableFlights = action.payload
+        }
     }
 });
 

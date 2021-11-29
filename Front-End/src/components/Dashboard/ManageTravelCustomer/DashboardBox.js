@@ -1,6 +1,6 @@
 import { Tabs, Tab, Container } from 'react-bootstrap'
 import SearchFlight from './SearchFlight'
-import ManageBooking from './ManageBooking'
+import ManageTravel from './ManageTravel/ManageTravel'
 import './DashboardBox.css'
 
 const DashboardBox = () => {
@@ -13,8 +13,8 @@ const DashboardBox = () => {
                         <Tab eventKey="searchflight" title="Search Flight">
                             <SearchFlight />
                         </Tab>
-                        <Tab eventKey="managebooking" title="Manage Booking">
-                            <ManageBooking />
+                        <Tab eventKey="managetravel" title="Manage Travel">
+                            <ManageTravel />
                         </Tab>
                     </Tabs>
                 </div>
