@@ -18,7 +18,7 @@ const FlightsDetails = () => {
                 <div style={{ marginTop: '30px' }}>
                     <h1 style={{ textAlign: 'left' }}>List of Available Flights</h1>
                     <div style={{ marginTop: '20px' }}>
-                    <Accordion>
+                    <Accordion style={{marginBottom:'40px'}}>
                         {flights}
                     </Accordion>
                     </div>

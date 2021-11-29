@@ -3,13 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     isCreditCard: false,
     isMileagePoints: false,
-    paymentMode: '',
     cardNo: '',
-    expiryDate: '',
+    expiryDate: new Date().toISOString(),
     cvv: '',
     nameOnCard: '',
     billingAddress: '',
-    amountPaid: '',
     mileagePoints: '',
     mileagePointsPaid: '',
 }
@@ -23,9 +21,6 @@ const paymentFlightSlice = createSlice({
         },
         setIsMileagePoints(state, action) {
             state.isMileagePoints = action.payload
-        },
-        setPaymentMode(state, action) {
-            state.paymentMode = action.payload
         },
         setCardNo(state, action) {
             state.cardNo = action.payload
@@ -41,9 +36,6 @@ const paymentFlightSlice = createSlice({
         },
         setBillingAddress(state, action) {
             state.billingAddress = action.payload
-        },
-        setAmountPaid(state, action) {
-            state.amountPaid = action.payload
         },
         setMileagePoints(state, action) {
             state.mileagePoints = action.payload

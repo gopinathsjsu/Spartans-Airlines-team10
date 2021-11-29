@@ -2,10 +2,15 @@ import {
     Button, Col, Form, Row
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
+import DatePicker from "react-datepicker";
 import { paymentFlightActions } from '../../../../../store/paymentFlightSlice'
+import axios from 'axios';
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreditCardPayment = (props) => {
     const dispatch = useDispatch()
+
+    console.log(props.flight.price)
 
     const flightID = props.flight._id
     const customerID = sessionStorage.getItem('customerId')
@@ -17,7 +22,8 @@ const CreditCardPayment = (props) => {
     const cvv = useSelector(state => state.paymentFlightSlice.cvv)
     const nameOnCard = useSelector(state => state.paymentFlightSlice.nameOnCard)
     const billingAddress = useSelector(state => state.paymentFlightSlice.billingAddress)
-    const amountPaid = useSelector(state => state.paymentFlightSlice.amountPaid)
+    const amountPaid = numOfPassengers * props.flight.price
+    const mileagePointsPaid = 0
 
     const onClickBack = () => {
         dispatch(paymentFlightActions.setIsCreditCard(false))
@@ -29,7 +35,7 @@ const CreditCardPayment = (props) => {
     }
 
     const onChangeExpiryDate = (e) => {
-        dispatch(paymentFlightActions.setExpiryDate(e.target.value))
+        dispatch(paymentFlightActions.setExpiryDate(e.toISOString()))
     }
 
     const onChangeCvv = (e) => {
@@ -42,10 +48,6 @@ const CreditCardPayment = (props) => {
 
     const onChangeBillingAddress = (e) => {
         dispatch(paymentFlightActions.setBillingAddress(e.target.value))
-    }
-
-    const onChangeAmountPaid = (e) => {
-        dispatch(paymentFlightActions.setAmountPaid(e.target.value))
     }
 
     const handlePayment = (event) => {
@@ -63,9 +65,19 @@ const CreditCardPayment = (props) => {
             nameOnCard,
             billingAddress,
             amountPaid,
+            mileagePointsPaid,
         }
 
         console.log(data)
+
+        axios.defaults.withCredentials = true;
+        axios.post('http://localhost:3001/reservations', data)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((e) => {
+                console.log(e)
+            })
     }
 
     return (
@@ -76,14 +88,16 @@ const CreditCardPayment = (props) => {
                         <Col><Form.Control type="cardNo" name="text" placeholder="Card Number" onChange={onChangeCardNo} required /></Col>
                     </Row>
                     <Row style={{marginTop:'10px'}}>
-                        <Col><Form.Control type="expiryDate" name="text" placeholder="Card Expiry Date" onChange={onChangeExpiryDate} required /></Col>
-                        <Col><Form.Control type="cvv" name="text" placeholder="CVV" onChange={onChangeCvv} required /></Col>
-                    </Row>
-                    <Row style={{marginTop:'10px'}}>
                         <Col><Form.Control type="nameOnCard" name="text" placeholder="Name On The Card" onChange={onChangeNameOnCard} required /></Col>
                         <Col><Form.Control type="billingAddress" name="text" placeholder="Address" onChange={onChangeBillingAddress} required /></Col>
                     </Row>
-                    <Row style={{marginTop:'10px'}}><Col><Form.Control type="amountPaid" name="text" placeholder="Payment Amount" onChange={onChangeAmountPaid} required /></Col></Row>
+                    <Row style={{marginTop:'10px'}}>
+                        <Col><Form.Label>Card Expiry Date:</Form.Label></Col>
+                        <Col><DatePicker selected={new Date(expiryDate)} onChange={(date) => onChangeExpiryDate(date)} /></Col>
+                    </Row>
+                    <Row style={{marginTop:'10px'}}>
+                        <Col><Form.Control type="cvv" name="text" placeholder="CVV" onChange={onChangeCvv} required /></Col>
+                        <Col><Form.Control type="amountPaid" name="text" placeholder={`Payment Amount: ${amountPaid}`} disabled /></Col></Row>
                     <Row style={{marginTop:'10px'}}>
                         <Col style={{textAlign:'center'}}><Button variant="primary" onClick={onClickBack}>Back</Button></Col>
                         <Col style={{textAlign:'center'}}><Button id="paybutton" type="submit">Pay</Button></Col>
