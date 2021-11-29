@@ -13,7 +13,6 @@ body('flightID').isAlphanumeric(),
 body('customerID').isAlphanumeric(),
 body('numOfPassengers').isNumeric(),
 body('paymentMode').isAlpha(),
-body('cvv').isNumeric(),
 async (req, res) => {
     console.log("Inside make reservations");
     const session = await mongoose.startSession();
@@ -36,7 +35,7 @@ async (req, res) => {
         } = req.body
 
         //check if payment is made using mileage points
-        let paymentDetails = {}
+        let paymentDetails = null;
         let updatedMileagePoints = 0;
         let error = {};
         const customerResult = await Customers.findOne({_id: customerID}, null, opts)
@@ -89,7 +88,7 @@ async (req, res) => {
             paymentMode: paymentMode,
         });
 
-        if (paymentDetails.count > 0) {
+        if (paymentDetails != null) {
             newReservation["paymentDetails"] = paymentDetails
             newReservation["amountPaid"] = amountPaid
         } else {
