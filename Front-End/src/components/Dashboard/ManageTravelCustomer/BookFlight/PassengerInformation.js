@@ -1,6 +1,6 @@
 import {
     Col,
-    Form, Row, Button
+    Form, Row, Button, FormGroup
 } from 'react-bootstrap';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
@@ -30,6 +30,7 @@ const PassengerInformation = (props) => {
     }
 
     const onChangeSeatNumber = (e) => {
+        console.log(e.target.value)
         setSeatDetails(e.target.value)
     }
 
@@ -65,10 +66,12 @@ const PassengerInformation = (props) => {
                         <Col><Form.Control type="text" placeholder="First Name" onChange={onChangeFirstName} required /></Col>
                         <Col><Form.Control type="text" placeholder="Last Name" onChange={onChangeLastName} required /></Col>
                         <Col>
-                            <Form.Control as="select" onChange={onChangeSeatNumber} className="my-1 mr-sm-2" custom required>
-                                <option>Choose Your Seat</option>
-                                {availableSeatsOptions}
-                            </Form.Control>
+                            <FormGroup>
+                                <Form.Control as="select" onChange={onChangeSeatNumber} className="my-1 mr-sm-2" custom required>
+                                    <option selected="true" disabled>Choose Your Seat</option>
+                                    {availableSeatsOptions}
+                                </Form.Control>
+                            </FormGroup>
                         </Col>
                         <Col><Button variant="primary" type="submit">
                             Add
