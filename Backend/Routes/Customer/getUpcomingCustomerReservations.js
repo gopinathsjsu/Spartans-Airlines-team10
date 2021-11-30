@@ -28,40 +28,60 @@ router.get(
       if (isCustomerValid) {
         console.log("this is a return", isCustomerValid);
         var currTime = new Date();
-        Reservation.find({
-          customerID: new mongodb.ObjectId(customerID),
-          // reservationDate: { $gt: currTime.toISOString() },
-          status: "upcoming"
+        const namesake = await Flights.find(
+          { departureDate: { $lt: currTime.toISOString() } },
+          { _id: 1 }
+        ).exec();
+        const oldFlightReservations = await Reservation.updateMany(
+          {
+            flightID: {
+              $in: await Flights.find(
+                { departureDate: { $lt: currTime.toISOString() } },
+                { _id: 1 }
+              ).exec(),
+            },
+          },
+          { status: "completed" }
+        );
+        console.log("namesake...", oldFlightReservations);
+
+        var upcomingFlightReservations = await Reservation.find(
+          {
+            status: "upcoming",
+            customerID: new mongodb.ObjectId(customerID),
+          },
+          { flightID: 1, _id: 0 }
+        );
+
+        console.log("the namesake values are ", upcomingFlightReservations);
+
+        var upcomingFlightIDs = [];
+
+        for (obj in upcomingFlightReservations) {
+          upcomingFlightIDs.push(upcomingFlightReservations[obj].flightID);
+        }
+
+        const upcomingFlightDetails = await Flights.find({
+          _id: { $in: upcomingFlightIDs },
+          departureDate: { $gte: currTime.toISOString() },
         })
-          .exec()
-          .then((reservations, error) => {
-            if (reservations) {
-              var flightIds = []
-              for(obj in reservations){
-                flightIds.push(reservations[obj].flightID);
-              }
-              Flights.find({flightID: flightIds, departureDate: {$gt: currTime.toISOString()}})
-              .exec()
-              .then((flight, err)=>{
-                if(flight){
-                  res.status(200).json({
-                    message: "The customer has upcoming reservations and their flight details are listed below",
-                    response: flight,
-                  });
-                }
-                else{
-                  res.status(200).json({
-                    message: "The customer's  has not upcoming reservation",
-                  });
-                }
-              })
-              
-            } else {
-              res.status(200).json({
-                message: "The customer's  has not upcoming reservation",
-              });
-            }
+          .sort({ departureDate: 1 })
+          .exec();
+
+        console.log("the upcomingFlights are....", upcomingFlightDetails);
+
+        if (upcomingFlightDetails.length != 0) {
+          return res.status(200).json({
+            message:
+              "The customer has upcoming reservations whose flight details are as follows",
+            response: upcomingFlightDetails,
           });
+        } else {
+          return res.status(200).json({
+            message: "The customer does not have any upcoming reservations",
+            response: [],
+          });
+        }
       } else {
         return res.status(400).json({
           message: "The Entered Customer in not valid",
@@ -74,7 +94,12 @@ router.get(
     }
   }
 );
-
+const findOldFlights = (currTime) => {
+  return Flights.find(
+    { departureDate: { $lt: currTime.toISOString() } },
+    { _id: 1 }
+  ).exec();
+};
 const checkCustomerValidity = async (custID) => {
   try {
     const findCustomer = await Customer.findById(new mongodb.ObjectId(custID));

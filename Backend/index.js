@@ -77,6 +77,7 @@ const getReservations = require("./Routes/Customer/getAllReservations");
 const getAvailableSeats = require("./Routes/Flights/getAvailableSeats");
 const getUpcomingFlights = require("./Routes/Employee/getUpcomingFlights");
 const getUpcomingCustomerReservations = require("./Routes/Customer/getUpcomingCustomerReservations");
+
 // Route config
 app.use("/login", login);
 app.use("/signup", signUp);
