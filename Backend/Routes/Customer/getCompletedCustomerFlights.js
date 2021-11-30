@@ -28,10 +28,7 @@ router.get(
       if (isCustomerValid) {
         console.log("this is a return", isCustomerValid);
         var currTime = new Date();
-        const namesake = await Flights.find(
-          { departureDate: { $lt: currTime.toISOString() } },
-          { _id: 1 }
-        ).exec();
+
         const oldFlightReservations = await Reservation.updateMany(
           {
             flightID: {
@@ -40,45 +37,48 @@ router.get(
                 { _id: 1 }
               ).exec(),
             },
+            status: "upcoming",
           },
           { status: "completed" }
         );
-        console.log("namesake...", oldFlightReservations);
+        console.log("oldFlightReservations...", oldFlightReservations);
 
-        var upcomingFlightReservations = await Reservation.find(
+        var completedFlightReservations = await Reservation.find(
           {
-            status: "upcoming",
+            status: "completed",
             customerID: new mongodb.ObjectId(customerID),
           },
           { flightID: 1, _id: 0 }
         );
 
-        console.log("the namesake values are ", upcomingFlightReservations);
+        console.log(
+          "completedFlightReservations values are ",
+          completedFlightReservations
+        );
 
-        var upcomingFlightIDs = [];
+        var completedFlightIDs = [];
 
-        for (obj in upcomingFlightReservations) {
-          upcomingFlightIDs.push(upcomingFlightReservations[obj].flightID);
+        for (obj in completedFlightReservations) {
+          completedFlightIDs.push(completedFlightReservations[obj].flightID);
         }
-
-        const upcomingFlightDetails = await Flights.find({
-          _id: { $in: upcomingFlightIDs },
-          departureDate: { $gte: currTime.toISOString() },
+ 
+        const completedFlightDetails = await Flights.find({
+          _id: { $in: uniqueCompletedFlightIds },
+          departureDate: { $lt: currTime.toISOString() },
         })
-          .sort({ departureDate: 1 })
+          .sort({ departureDate: "descending" })
           .exec();
 
-        console.log("the upcomingFlights are....", upcomingFlightDetails);
+        console.log("the upcomingFlights are....", completedFlightDetails);
 
-        if (upcomingFlightDetails.length != 0) {
+        if (completedFlightDetails.length != 0) {
           return res.status(200).json({
-            message:
-              "The customer has upcoming reservations whose flight details are as follows",
-            response: upcomingFlightDetails,
+            message: "The flight details of completed journeys are",
+            response: completedFlightDetails,
           });
         } else {
           return res.status(200).json({
-            message: "The customer does not have any upcoming reservations",
+            message: "The customer does not have any completed journey",
             response: [],
           });
         }
@@ -94,12 +94,7 @@ router.get(
     }
   }
 );
-const findOldFlights = (currTime) => {
-  return Flights.find(
-    { departureDate: { $lt: currTime.toISOString() } },
-    { _id: 1 }
-  ).exec();
-};
+
 const checkCustomerValidity = async (custID) => {
   try {
     const findCustomer = await Customer.findById(new mongodb.ObjectId(custID));
