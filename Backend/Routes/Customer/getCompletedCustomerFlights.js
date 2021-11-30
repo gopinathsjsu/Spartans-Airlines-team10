@@ -63,7 +63,7 @@ router.get(
         }
  
         const completedFlightDetails = await Flights.find({
-          _id: { $in: uniqueCompletedFlightIds },
+          _id: { $in: completedFlightIDs },
           departureDate: { $lt: currTime.toISOString() },
         })
           .sort({ departureDate: "descending" })
