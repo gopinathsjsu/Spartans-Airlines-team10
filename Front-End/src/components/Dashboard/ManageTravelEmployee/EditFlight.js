@@ -80,7 +80,7 @@ const EditFlight = () => {
 			<div className="container">
 			<Container>
             <div>
-			<Row className="rows">
+			<Row className="form-box">
 			<Col>
 			
 			<Form id="Editflight-form" method="post" onSubmit={handleEditFlight}> 
@@ -88,17 +88,17 @@ const EditFlight = () => {
                 <p>Enter details to Edit a flight</p>
 			 
 			<Form.Group className="Editflightbox" controlId="formFlightId">
-                <Form.Control type="text" name="flightid" placeholder="Enter The Flight number" onChange={onChangeFlightNumber} required />
+                <Form.Control type="text" name="flightid" placeholder="Enter the Flight Number" onChange={onChangeFlightNumber} required />
                 </Form.Group>
                 <Form.Group className="Editflightbox" controlId="formPrice">
-                <Form.Control type="text" name="price" placeholder="Enter The price" onChange={onChangePrice} required />
+                <Form.Control type="text" name="price" placeholder="Enter the Price" onChange={onChangePrice} required />
                 </Form.Group>
                 <Form.Group className="Editflightbox" controlId="formMileagePoints">
-                <Form.Control type="text" name="mileagepoints" placeholder="Enter The mileage points" onChange={onChangeMileagePoints} required />
+                <Form.Control type="text" name="mileagepoints" placeholder="Enter the Mileage Points" onChange={onChangeMileagePoints} required />
                 </Form.Group>
-
+            <br/>
             <Button id="searchbutton"  type="submit">
-			Edit
+			EDIT
 			</Button>
             </Form>
 			</Col>

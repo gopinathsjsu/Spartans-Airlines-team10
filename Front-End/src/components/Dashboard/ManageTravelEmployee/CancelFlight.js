@@ -64,7 +64,7 @@ const CancelFlight = () => {
 			<div className="container">
 			<Container>
             <div>
-			<Row className="rows">
+			<Row className="form-box">
 			<Col>
 			
 			<Form id="cancelflight-form" method="post" onSubmit={handleCancelFlight}> 
@@ -72,11 +72,11 @@ const CancelFlight = () => {
                 {/* <p>Enter details to cancel a flight</p> */}
 			 
 			<Form.Group className="cancelflightbox" controlId="formFlightId">
-                <Form.Control type="text" name="flightid" placeholder="Enter The Flight Id" onChange={onChangeFlightId} required />
+                <Form.Control type="text" name="flightid" placeholder="Enter the Flight Id to Cancel" onChange={onChangeFlightId} required />
                 </Form.Group>
-
+            <br/>
             <Button id="searchbutton"  type="submit">
-			Cancel
+			CANCEL
 			</Button>
             </Form>
 			</Col>
