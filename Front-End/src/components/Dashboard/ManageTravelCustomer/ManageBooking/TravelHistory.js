@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect } from "react"
 
-const ManageTravel = () => {
+const TravelHistory = () => {
 
     useEffect(() => {
         getTravelInformation()
@@ -9,14 +9,14 @@ const ManageTravel = () => {
 
     const getTravelInformation = async () => {
         const customerId = sessionStorage.getItem('customerId')
-        const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerReservations/${customerId}`)
+        const res = await axios.get(`http://localhost:3001/customer/getCompletedCustomerFlights/${customerId}`)
         console.log(res)
     }
 
 
     return (
-        <h1>Manage Travel</h1>
+        <h1>Travel History</h1>
     )
 }
 
-export default ManageTravel
+export default TravelHistory
