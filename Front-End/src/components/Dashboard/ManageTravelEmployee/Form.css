@@ -1,0 +1,14 @@
+.form-box {
+    display: block;
+    width: 100%;
+    padding: .5rem .5rem .5rem .5rem;
+    margin: .2vw 0 ;
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 1px;
+    font-size: 20px;
+}
+
+/* .form-box textarea{
+    height: 10vh;
+} */

@@ -9,32 +9,21 @@ const DashboardBoxEmployee = () => {
     return (
         <div>
             <Container>
-                <h1 id="heading">Manage Travel Employee</h1>
+                <h1 id="heading">Manage Travel - Employee</h1>
                 <div id="tabs">
                     <Tabs defaultActiveKey="Addflight" className="mb-3">
                         <Tab eventKey="Addflight" title="Add Flight">
                             <AddFlight />
                         </Tab>
-                        {/* <Tab eventKey="managebooking" title="Manage Booking Employee">
-                            <ManageBookingEmployee />
-                        </Tab> */}
-                    </Tabs>
-                </div>
-                <div id="tabs">
-                    <Tabs defaultActiveKey="Editflight" className="mb-3">
                         <Tab eventKey="Editflight" title="Edit Flight">
                             <EditFlight />
                         </Tab>
-                    </Tabs>
-                </div>
-                <div id="tabs">
-                    <Tabs defaultActiveKey="Cancelflight" className="mb-3">
                         <Tab eventKey="Cancelflight" title="Cancel Flight">
                             <CancelFlight />
                         </Tab>
                     </Tabs>
-                </div>
-            </Container>
+                    </div>
+               </Container>
         </div>
     )
 }
