@@ -11,6 +11,8 @@ const UpcomingTravel = () => {
             const customerId = sessionStorage.getItem('customerId')
             const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerFlights/${customerId}`)
             const upcomingTravel = res.data.response
+
+            console.log(upcomingTravel)
     
             const data = upcomingTravel.map((individualData) => {
                 return <ListGroup.Item style={{textAlign:'left'}}><TravelInformation individualData={individualData} /></ListGroup.Item>
