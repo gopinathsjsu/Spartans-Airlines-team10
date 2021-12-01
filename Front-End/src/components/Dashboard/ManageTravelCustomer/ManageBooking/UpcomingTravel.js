@@ -1,21 +1,36 @@
 import axios from "axios"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import TravelInformation from './TravelInformation'
+import {ListGroup} from 'react-bootstrap'
 
 const UpcomingTravel = () => {
+    const [upcomingTravelInformation, setUpcomingTravelInformation] = useState([])
 
     useEffect(() => {
-        getTravelInformation()
-    })
+        const getTravelInformation = async () => {
+            const customerId = sessionStorage.getItem('customerId')
+            const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerFlights/${customerId}`)
+            const upcomingTravel = res.data.response
+    
+            const data = upcomingTravel.map((individualData) => {
+                return <ListGroup.Item style={{textAlign:'left'}}><TravelInformation individualData={individualData} /></ListGroup.Item>
+            })
+    
+            setUpcomingTravelInformation(data)
+        }
 
-    const getTravelInformation = async () => {
-        const customerId = sessionStorage.getItem('customerId')
-        const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerFlights/${customerId}`)
-        console.log(res)
-    }
+        getTravelInformation()
+    }, [])
+
+    
 
 
     return (
-        <h1>UpcomingTravel</h1>
+        <div>
+            <ListGroup style={{marginLeft:'10px', marginRight:'10px', marginBottom:'10px'}}>
+                {upcomingTravelInformation}
+            </ListGroup>
+        </div>
     )
 }
 
