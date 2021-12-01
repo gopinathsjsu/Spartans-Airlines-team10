@@ -3,8 +3,13 @@ const router = express.Router();
 const Customer = require("../../Models/CustomerModel.js");
 const Reservation = require("../../Models/ReservationsModel");
 const Flights = require("../../Models/FlightsModel");
+// const {
+//   FlightModel,
+//   ReservationModel,
+// } = require("../../Models/CustomerReservation");
 const mongodb = require("mongodb");
 const { param, validationResult } = require("express-validator");
+const Reservations = require("../../Models/ReservationsModel");
 
 router.get(
   "/:customerID",
@@ -35,35 +40,58 @@ router.get(
                 { departureDate: { $lt: currTime.toISOString() } },
                 { _id: 1 }
               ).exec(),
-            }, status: "upcoming"
+            },
+            status: "upcoming",
           },
           { status: "completed" }
         );
         console.log("oldFlightReservations...", oldFlightReservations);
 
-        var upcomingFlightReservations = await Reservation.find(
+        // var upcomingFlightReservations = await Reservation.find(
+        //   {
+        //     status: "upcoming",
+        //     customerID: new mongodb.ObjectId(customerID),
+        //   },
+        //   { flightID: 1, _id: 0 }
+        // );
+
+        // console.log(
+        //   "the upcomingFlightReservations values are ",
+        //   upcomingFlightReservations
+        // );
+
+        // var upcomingFlightIDs = [];
+
+        // for (obj in upcomingFlightReservations) {
+        //   upcomingFlightIDs.push(upcomingFlightReservations[obj].flightID);
+        // }
+
+        // const upcomingFlightDetails = await Flights.find({
+        //   _id: { $in: upcomingFlightIDs },
+        //   departureDate: { $gte: currTime.toISOString() },
+        // })
+        //   .sort({ departureDate: 1 })
+        //   .exec();
+        const upcomingFlightDetails = await Reservation.aggregate([
           {
-            status: "upcoming",
-            customerID: new mongodb.ObjectId(customerID),
+            $match: {
+              status: "upcoming",
+              customerID: new mongodb.ObjectId(customerID),
+            },
           },
-          { flightID: 1, _id: 0 }
-        );
-
-        console.log("the upcomingFlightReservations values are ", upcomingFlightReservations);
-
-        var upcomingFlightIDs = [];
-
-        for (obj in upcomingFlightReservations) {
-          upcomingFlightIDs.push(upcomingFlightReservations[obj].flightID);
-        }
-
-        const upcomingFlightDetails = await Flights.find({
-          _id: { $in: upcomingFlightIDs },
-          departureDate: { $gte: currTime.toISOString() },
-        })
-          .sort({ departureDate: 1 })
-          .exec();
-
+          {
+            $lookup: {
+              from: "flights",
+              localField: "flightID",
+              foreignField: "_id",
+              as: "flight_info",
+            },
+          },
+          {
+            $unwind: "$flight_info",
+          },
+        ]);
+        // console.log("the reservation flights model....", upcomingReservations);
         console.log("the upcomingFlights are....", upcomingFlightDetails);
 
         if (upcomingFlightDetails.length != 0) {
