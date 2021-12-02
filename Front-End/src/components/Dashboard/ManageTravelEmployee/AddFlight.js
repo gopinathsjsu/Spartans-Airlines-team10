@@ -187,98 +187,136 @@ const AddFlight = () => {
 			<div className="container">
 			<Container>
             <div className="form-box">
-			 <Row className="rows">
-			 <Col>
             <Form id="addflight-form" method="post" onSubmit={handleAddFlight}> 
-				<h1>Add FLight</h1>
                 <p>Enter details to add a flight</p>
-
-
-            	<Form.Group className="addflightbox" controlId="formFlightNumber"> 
-                <Form.Control type="text" name="flightnumber" placeholder="Enter the Flight Number" onChange={onChangeFlightNumber} required /> 		
-                </Form.Group>
-
-                <Form.Group className="addflightbox" controlId="formCarrier"> 
-                <Form.Control type="text" name="carrier" placeholder="Enter the Flight Carrier" onChange={onChangeCarrier} required /> 		
-                </Form.Group>
-				
-	            <Form.Group className="addflightbox" controlId="formOrigin"> 
-                <Form.Control type="text" name="origin" placeholder="Enter the Flight Origin" onChange={onChangeOrigin} required /> 					
-                </Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formOriginCode"> 
-				<Form.Control type="text" name="origincode" placeholder="Enter the Flight Origin Code" onChange={onChangeOriginCode} required /> 		
-				</Form.Group>	
-				
-				<Form.Group className="addflightbox" controlId="formDestination"> 
-				<Form.Control type="text" name="destination" placeholder="Enter the Flight Destination" onChange={onChangeDestination} required /> 	
-				</Form.Group>	
-				
-				<Form.Group className="addflightbox" controlId="formDestinationCode">
-				<Form.Control type="text" name="destinationcode" placeholder="Enter the Flight Destination Code" onChange={onChangeDestinationCode} required /> 
-				</Form.Group>
-
-                <Form.Group className="addflightbox" controlId="formdepDate">
-				<Form.Control type="number" name="depdate" placeholder="Enter the Flight Departure Date" onChange={onChangedepDate} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formdepMonth">
-				<Form.Control type="number" name="depmonth" placeholder="Enter the Flight Departure Month" onChange={onChangedepMonth} required /> 	
-				</Form.Group>	
-          
-         
-                <Form.Group className="addflightbox" controlId="formarrDate">
-				<Form.Control type="number" name="arrdate" placeholder="Enter the Flight Arrival Date" onChange={onChangearrDate} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formarrMonth">
-				<Form.Control type="number" name="arrmonth" placeholder="Enter the Flight Arrival Month" onChange={onChangearrMonth} required /> 	
-				</Form.Group>
-                <Form.Group className="addflightbox" controlId="formdepYear">
-				<Form.Control type="number" name="depyear" placeholder="Enter the Flight Departure Year" onChange={onChangedepYear} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formdepHrs">
-				<Form.Control type="number" name="dephrs" placeholder="Enter the Flight Departure Hours" onChange={onChangedepHrs} required /> 	
-				</Form.Group>
-                <Form.Group className="addflightbox" controlId="formdepMins">
-				<Form.Control type="number" name="depmins" placeholder="Enter the Flight Departure Minutes" onChange={onChangedepMins} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formarrHrs">
-				<Form.Control type="number" name="arrhrs" placeholder="Enter the Flight Arrival Hours" onChange={onChangearrHrs} required /> 	
-				</Form.Group>
-                <Form.Group className="addflightbox" controlId="formarrMins">
-				<Form.Control type="number" name="arrmins" placeholder="Enter the Flight Arrival Minutes" onChange={onChangearrMins} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formarrYear">
-				<Form.Control type="number" name="arryear" placeholder="Enter the Flight Arrival Year" onChange={onChangearrYear} required /> 	
-				</Form.Group>
-
-                <Form.Group className="addflightbox" controlId="formPrice"> 
-				<Form.Control type="number" name="price" placeholder="Enter the Flight Price" onChange={onChangePrice} required /> 
-				</Form.Group>	
-
-				<Form.Group className="addflightbox" controlId="formCapacity">
-				<Form.Control type="number" name="capacity" placeholder="Enter the Flight Capacity" onChange={onChangeCapacity} required /> 		
-				</Form.Group>		
-				
-
-                <Form.Group className="addflightbox" controlId="formMileagePoints">
-				<Form.Control type="number" name="mileagepoints" placeholder="Enter the Flight Mileage Points" onChange={onChangeMileagePoints} required /> 	 
-				</Form.Group>
-				
-				<Form.Group className="addflightbox" controlId="formTravelDistance"> 
-				<Form.Control type="number" name="traveldistance" placeholder="Enter the Flight Travel Distance" onChange={onChangeTravelDistance} required /> 	
-				</Form.Group>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formFlightNumber"> 
+                            <Form.Control type="text" name="flightnumber" placeholder="Enter the Flight Number" onChange={onChangeFlightNumber} required /> 		
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formCarrier"> 
+                            <Form.Control type="text" name="carrier" placeholder="Enter the Flight Carrier" onChange={onChangeCarrier} required /> 		
+                        </Form.Group>
+                    </Col>   
+                </Row>
+            	<Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formOrigin"> 
+                            <Form.Control type="text" name="origin" placeholder="Enter the Flight Origin" onChange={onChangeOrigin} required /> 					
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formOriginCode"> 
+				            <Form.Control type="text" name="origincode" placeholder="Enter the Flight Origin Code" onChange={onChangeOriginCode} required /> 		
+				        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formDestination"> 
+				            <Form.Control type="text" name="destination" placeholder="Enter the Flight Destination" onChange={onChangeDestination} required /> 	
+				        </Form.Group>	
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formDestinationCode">
+				            <Form.Control type="text" name="destinationcode" placeholder="Enter the Flight Destination Code" onChange={onChangeDestinationCode} required /> 
+				        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formdepDate">
+				            <Form.Control type="number" name="depdate" placeholder="Enter the Flight Departure Date" onChange={onChangedepDate} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formarrDate">
+				            <Form.Control type="number" name="arrdate" placeholder="Enter the Flight Arrival Date" onChange={onChangearrDate} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formdepYear">
+				            <Form.Control type="number" name="depyear" placeholder="Enter the Flight Departure Year" onChange={onChangedepYear} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formarrYear">
+				            <Form.Control type="number" name="arryear" placeholder="Enter the Flight Arrival Year" onChange={onChangearrYear} required /> 	
+				        </Form.Group>
+                    </Col>
+                </Row>
+				<Row className="rows">
+                <Col>
+                        <Form.Group className="addflightbox" controlId="formdepMonth">
+				            <Form.Control type="number" name="depmonth" placeholder="Enter the Flight Departure Month" onChange={onChangedepMonth} required /> 	
+				        </Form.Group>	
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formarrMonth">
+				            <Form.Control type="number" name="arrmonth" placeholder="Enter the Flight Arrival Month" onChange={onChangearrMonth} required /> 	
+				        </Form.Group>
+                    </Col>
+                    
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formdepHrs">
+				            <Form.Control type="number" name="dephrs" placeholder="Enter the Flight Departure Hours" onChange={onChangedepHrs} required /> 	
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formarrHrs">
+				            <Form.Control type="number" name="arrhrs" placeholder="Enter the Flight Arrival Hours" onChange={onChangearrHrs} required /> 	
+				        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formdepMins">
+				            <Form.Control type="number" name="depmins" placeholder="Enter the Flight Departure Minutes" onChange={onChangedepMins} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formarrMins">
+				            <Form.Control type="number" name="arrmins" placeholder="Enter the Flight Arrival Minutes" onChange={onChangearrMins} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formPrice"> 
+				            <Form.Control type="number" name="price" placeholder="Enter the Flight Price" onChange={onChangePrice} required /> 
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formCapacity">
+				            <Form.Control type="number" name="capacity" placeholder="Enter the Flight Capacity" onChange={onChangeCapacity} required /> 		
+				        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="rows">
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formMileagePoints">
+				            <Form.Control type="number" name="mileagepoints" placeholder="Enter the Flight Mileage Points" onChange={onChangeMileagePoints} required /> 	 
+				        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="addflightbox" controlId="formTravelDistance"> 
+				            <Form.Control type="number" name="traveldistance" placeholder="Enter the Flight Travel Distance" onChange={onChangeTravelDistance} required /> 	
+				        </Form.Group>
+                    </Col>
+                </Row>
                 <br/>
                 <Button id="searchbutton"  type="submit">
-				ADD
+				    ADD
 				</Button>
 			</Form>
-			</Col>
-			</Row>
             </div>
             </Container>
         </div>
