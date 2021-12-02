@@ -56,16 +56,54 @@ Shravan Vallaban <br>
 # Deployment Diagram:
 
 # Design Decisions:
+
 * ***Database : Why NoSQL?*** 
+
    * In general we chose NoSQL because they support their own access languages that can interpret the data being stored, rather than require a relational model within the underlying database.
    * This more developer-centric mentality to the design of databases and their access application programming interfaces (API) are the reason NoSQL databases have become very popular among application developers.
    * Application developers don’t need to know the inner workings and vagaries of databases before using them.
    * NoSQL databases, in general, helps developers to work on what is required in the applications instead of trying to force relational databases to do what is required.
 
 * ***Database : Why MongoDB over other NoSQLs?***
+
    * We chose MongoDB over other NoSQL databases because they easily support multiple levels of nested data unlike others where you have define the structure and type while creating the table.
    * When compared to Cassandra, Mongo allows us to choose secondary indexes along with the flexibility in the data model.
    * Unlike any other NoSQL DB Mongo is Schema-less, we don't have to define the schema in the beginning and it also allows the developers to change the schema dynamically
+
+* ***Choosing Server-side Framework: Why Node JS over Flask?***
+
+   * While Flask is complete backend framework based on python, Node JS is a full-stack framework based on javascript. Although one could develop backend of the web application in Flask, the UI of the application is commonly devloped in javascript and it makes sense to develop the server-side script in javascript as well since it gives continuity to between the client and server sides. Also, collaboration between the UI and Server scripting teams can happen at ease with each team helping the other in debugging as well given the shared knowlegdge of the languages used.
+
+   * Node JS embeds the Chrome V8 compiler within it and it compiles the JS code into machine language code in memory the first it is referenced therby exhibiting a just in time compilation approach. Chrome V8 compiled machine code executes faster than python compiled byte code
+
+   * It has been found that when medium-load applications written separtely in python as well as Node are deployed on a docker container and tested with a load testing application, the application written in python was twice as slow as the Node.js service.
+
+   * The throughput of the applications written in python is also at least 10% lower than that of Node.js service.
+
+   * All these factors combined implied that we would be better served if we design the server side in Node.js
+
+* ***Client-side scripting: Why React JS?***
+
+   * It is no-brainer to choose Javascript over any other client side scripting language given the overwhelming popularity amongst the developer community and also the number of libraries and frameworks, but choosing amongst React and Angular was something that needs to paid attention to
+
+   * React uses Virtual Dom, whereas Angular uses a traditional Dom.
+
+   * Now, in traditional Dom, if you want to update specific information of your user, Angular will rewrite the whole structure of the Html Tree. Whereas, React Virtual Dom allows you to update the changes without rewriting the entire HTML/ In short, React Virtual Dom is faster than the Angular Traditional Dom.
+
+   * React Uni-directional data flow ensures that the state change takes place meticulously even in complex projects. Data flow control is very simple in react even for large projects.
+
+   * Opposite to React's uni-directional nature, Angular's Bi-directional data flow makes it even complex for large applications to deal with data quickly.
+
+   * Thus the clear winner was React amongst the two and we chose it for our application.
+
+*  ***Express JS***
+   
+   * Express is used for defining routes of a web application based on HTTP methods.
+
+   * Provides us a lot of middleware modules to performing validation and sanitization
+
+   * We can also define error handling using the middleware provided by Express.
+
 
 # Application Screenshots:
 
