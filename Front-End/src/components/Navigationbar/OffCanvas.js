@@ -13,6 +13,7 @@ const OffCanvas = () => {
     const handleLogout = () => {
         cookie.remove('cookie', { path: '/' })
         sessionStorage.removeItem('customerId')
+        sessionStorage.removeItem('employeeId')
     }
 
     return (
@@ -26,7 +27,7 @@ const OffCanvas = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ListGroup variant="flush">
-                        <ListGroup.Item>
+                        {sessionStorage.getItem('customerId') ? <ListGroup.Item>
                             <Link
                                 className="pageLink"
                                 to={{
@@ -35,8 +36,8 @@ const OffCanvas = () => {
                             >
                                 <h3 className="options">Profile</h3>
                             </Link>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
+                        </ListGroup.Item> : null}
+                        {sessionStorage.getItem('customerId') ? <ListGroup.Item>
                             <Link
                                 className="pageLink"
                                 to={{
@@ -45,8 +46,8 @@ const OffCanvas = () => {
                             >
                                 <h3 className="options">Manage Travel</h3>
                             </Link>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
+                        </ListGroup.Item> : null}
+                        {sessionStorage.getItem('customerId') ? null : <ListGroup.Item>
                             <Link
                                 className="pageLink"
                                 to={{
@@ -55,7 +56,7 @@ const OffCanvas = () => {
                             >
                                 <h3 className="options">Manage Travel Employee</h3>
                             </Link>
-                        </ListGroup.Item>
+                        </ListGroup.Item>}
                         <ListGroup.Item>
                             <Button id="logoutbutton" href="/" onClick={handleLogout}>
                                 <h3>Logout</h3>

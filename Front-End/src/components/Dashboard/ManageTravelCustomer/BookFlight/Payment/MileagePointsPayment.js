@@ -2,12 +2,18 @@ import {
     Button, Form, Row, Col
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
 import axios from 'axios';
 import { paymentFlightActions } from '../../../../../store/paymentFlightSlice'
+import SweetAlert from 'react-bootstrap-sweetalert';
+import { Redirect } from 'react-router';
 
 const MileagePointsPayment = (props) => {
     const dispatch = useDispatch()
     const rewardPoints = useSelector(state => state.mainSlice.rewardPoints)
+
+    const [paymentFlag, setPaymentFlag] = useState(false);
+    const [redirectPage, setRedirectPage] = useState(null);
 
     const flightID = props.flight._id
     const customerID = sessionStorage.getItem('customerId')
@@ -39,16 +45,27 @@ const MileagePointsPayment = (props) => {
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:3001/reservations', data)
             .then((response) => {
-                console.log(response)
+                setPaymentFlag(true)
             })
             .catch((e) => {
                 console.log(e)
             })
     }
 
+    const onConfirm = () => {
+        setPaymentFlag(false)
+        setRedirectPage(<Redirect to='/customerdashboard' />)
+    }
+
     return (
         <div>
-
+            {redirectPage}
+            {paymentFlag ? <SweetAlert
+                success
+                title={"Successfully Payed !"}
+                onConfirm={onConfirm}
+                dependencies={[paymentFlag]}
+            ></SweetAlert> : null}
             <Form id="reward-points-form" method="post" onSubmit={handlePayment}>
                 <p>Mileage Points Payment</p>
                 <Row style={{ marginTop: '10px' }}>

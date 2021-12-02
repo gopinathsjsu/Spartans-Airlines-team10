@@ -4,11 +4,15 @@ import {
 import { useState } from 'react'
 import UpdateSeatForm from './UpdateSeatForm'
 import axios from 'axios'
+import SweetAlert from 'react-bootstrap-sweetalert';
+import { Redirect } from 'react-router';
 import "./UpdateTravel.css"
 
 const UpdateTravel = (props) => {
     const [show, setShow] = useState(false);
     const [availableSeats, setAvailableSeats] = useState([])
+    const [cancelFlag, setCancelFlag] = useState(false)
+    const [redirectPage, setRedirectPage] = useState(null)
 
     const customerID = sessionStorage.getItem('customerId')
     const reservationID = props.individualData._id
@@ -31,7 +35,7 @@ const UpdateTravel = (props) => {
         axios.defaults.withCredentials = true;
         axios.put('http://localhost:3001/reservations/cancelReservation', data)
             .then((response) => {
-                console.log(response)
+                setCancelFlag(true)
             })
             .catch(() => {
             })
@@ -47,8 +51,20 @@ const UpdateTravel = (props) => {
         )
     })
 
+    const onConfirm = () => {
+        setCancelFlag(false)
+        setRedirectPage(<Redirect to='/customerdashboard' />)
+    }
+
     return (
         <div>
+            {redirectPage}
+            {cancelFlag ? <SweetAlert
+                success
+                title={"Successfully Payed !"}
+                onConfirm={onConfirm}
+                dependencies={[cancelFlag]}
+            ></SweetAlert> : null}
             <div><Button variant="primary" onClick={handleShow}>Update</Button> <Button id="paybutton" onClick={handleCancelBooking}>Cancel</Button></div>
             <Modal dialogClassName="updatemodal" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
