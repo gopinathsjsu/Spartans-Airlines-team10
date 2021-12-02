@@ -41,7 +41,7 @@ const PassengerInformation = (props) => {
             firstName,
             lastName,
             seatID: seatDetails[0],
-            seatNumber: seatDetails[1],
+            seatNumber: seatDetails.slice(1),
         }
 
         const data = {
