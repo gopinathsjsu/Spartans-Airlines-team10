@@ -49,6 +49,7 @@ router.post(
               req.session.employee = result;
               return res.status(200).json({
                 message: "Auth successful",
+                response: employee[0],
               });
             } else {
               return res.status(401).json({
