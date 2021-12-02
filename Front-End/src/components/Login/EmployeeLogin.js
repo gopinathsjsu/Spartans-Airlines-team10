@@ -44,13 +44,17 @@ const EmployeeLogin = () => {
             emailID: email,
             password
         }
+
+        console.log(data)
+
         axios.defaults.withCredentials = true;
-        axios.post('http://localhost:3001/login', data)
+        axios.post('http://localhost:3001/employee/login', data)
             .then((response) => {
                 onLogin(response.data)
                 setRedirectFlag(true)
             })
-            .catch(() => {
+            .catch((e) => {
+                console.log(e)
                 invalidLogin()
             })
     }
