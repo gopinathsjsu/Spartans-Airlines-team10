@@ -35,24 +35,29 @@ router.post(
         errors: errorsFromValidation.array(),
       });
     }
-    var depDate = req.body.depDate;
-    var arrDate = req.body.arrDate;
-    var depMonth = req.body.depMonth;
-    var arrMonth = req.body.arrMonth;
-    var depYear = req.body.depYear;
-    var arrYear = req.body.arrYear;
-    var depHrs = req.body.depHrs;
-    var depMins = req.body.depMins;
-    var secs = "00";
+    const depDay = req.body.depDate;
+    const arrDay = req.body.arrDate;
+    const depMonth = req.body.depMonth - 1;
+    const arrMonth = req.body.arrMonth - 1;
+    const depYear = req.body.depYear;
+    const arrYear = req.body.arrYear;
+    const depHrs = req.body.depHrs;
+    const depMins = req.body.depMins;
+    const secs = "00";
+
+    console.log("departure month...", depMonth);
+    console.log("arr monght....", arrMonth);
 
     var depdate = new Date(
-      Date.UTC(depYear, depMonth, depDate, depHrs, depMins, secs)
+      Date.UTC(depYear, depMonth, depDay, depHrs, depMins, secs)
     );
+
+    console.log("the dep date+++.", depdate);
 
     var arrHrs = req.body.arrHrs;
     var arrMins = req.body.arrMins;
     var arrdate = new Date(
-      Date.UTC(arrYear, arrMonth, arrDate, arrHrs, arrMins, secs)
+      Date.UTC(arrYear, arrMonth, arrDay, arrHrs, arrMins, secs)
     );
     if (arrdate < depdate || arrdate == depdate) {
       return res.status(409).json({
@@ -82,13 +87,15 @@ router.post(
             destinationCode = req.body.destinationCode;
             depISOString = depdate.toISOString();
 
-            var arrdate = new Date(
-              Date.UTC(arrYear, arrMonth, arrDate, arrHrs, arrMins, secs)
-            );
+            // var arrdate = new Date(
+            //   Date.UTC(arrYear, arrMonth, arrDay, arrHrs, arrMins, secs)
+            // );
 
             arrISOString = arrdate.toISOString();
             price = req.body.price;
             capacity = req.body.capacity;
+            console.log("departure date....", depISOString);
+            console.log("arrival data....", arrISOString);
 
             travelDistance = req.body.travelDistance;
 
