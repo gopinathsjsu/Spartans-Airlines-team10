@@ -3,6 +3,7 @@ const router = express.Router();
 const Employee = require("../../Models/EmployeeModel");
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
+const mongodb = require("mongodb");
 
 router.post(
   "/",
@@ -33,7 +34,7 @@ router.post(
               });
             } else {
               const emp = new Employee({
-                _id: new mongoose.Types.ObjectId(),
+                _id: new mongodb.ObjectId(),
                 emailID: req.body.emailID,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,

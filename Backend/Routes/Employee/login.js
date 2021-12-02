@@ -47,14 +47,11 @@ router.post(
                 path: "/",
               });
               req.session.employee = result;
-              res.setHeader("Content-Type", "application/json");
-              // res.status(200);
-              res.status = 200;
               return res.status(200).json({
                 message: "Auth successful",
               });
             } else {
-              res.status(401).json({
+              return res.status(401).json({
                 message: "Auth failed",
               });
             }
