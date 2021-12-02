@@ -11,11 +11,9 @@ const UpcomingTravel = () => {
             const customerId = sessionStorage.getItem('customerId')
             const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerFlights/${customerId}`)
             const upcomingTravel = res.data.response
-
-            console.log(upcomingTravel)
     
             const data = upcomingTravel.map((individualData) => {
-                return <ListGroup.Item style={{textAlign:'left'}}><TravelInformation individualData={individualData} /></ListGroup.Item>
+                return <ListGroup.Item key={individualData._id} style={{textAlign:'left', marginBottom:'10px', borderWidth:'2px'}}><TravelInformation individualData={individualData} /></ListGroup.Item>
             })
     
             setUpcomingTravelInformation(data)
@@ -30,7 +28,7 @@ const UpcomingTravel = () => {
     return (
         <div>
             <ListGroup style={{marginLeft:'10px', marginRight:'10px', marginBottom:'10px'}}>
-                {upcomingTravelInformation}
+                {upcomingTravelInformation.length > 0 ? upcomingTravelInformation : <h3>No Upcoming Travel</h3>}
             </ListGroup>
         </div>
     )

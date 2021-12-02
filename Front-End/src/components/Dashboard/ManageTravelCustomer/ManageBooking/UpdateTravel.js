@@ -10,6 +10,9 @@ const UpdateTravel = (props) => {
     const [show, setShow] = useState(false);
     const [availableSeats, setAvailableSeats] = useState([])
 
+    const customerID = sessionStorage.getItem('customerId')
+    const reservationID = props.individualData._id
+
     const handleClose = () => setShow(false);
 
     const handleShow = async () => {
@@ -19,8 +22,6 @@ const UpdateTravel = (props) => {
     }
 
     const handleCancelBooking = async () => {
-        const customerID = sessionStorage.getItem('customerId')
-        const reservationID = props.individualData._id
 
         const data = {
             customerID,
@@ -41,7 +42,7 @@ const UpdateTravel = (props) => {
     const passengerUpdateInfoForms = passengerInfos.map((passengerInfo) => {
         return (
             <div key={passengerInfo._id}>
-                <UpdateSeatForm passengerInfo={passengerInfo} availableSeats={availableSeats} />
+                <UpdateSeatForm passengerInfo={passengerInfo} availableSeats={availableSeats} reservationID={reservationID} />
             </div>
         )
     })

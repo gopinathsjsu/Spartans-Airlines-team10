@@ -1,21 +1,35 @@
 import axios from "axios"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import TravelHistoryInformation from './TravelHistoryInformation'
+import { ListGroup } from 'react-bootstrap'
 
 const TravelHistory = () => {
+    const [travelHistoryInformation, setTravelHistoryInformation] = useState([])
 
     useEffect(() => {
-        getTravelInformation()
-    })
+        const getTravelInformation = async () => {
+            const customerId = sessionStorage.getItem('customerId')
+            const res = await axios.get(`http://localhost:3001/customer/getCompletedCustomerFlights/${customerId}`)
+            
+            const travelHistory = res.data.response
+    
+            const data = travelHistory.map((individualData) => {
+                return <ListGroup.Item key={individualData._id} style={{textAlign:'left', marginBottom:'10px', borderWidth:'2px'}}><TravelHistoryInformation individualData={individualData} /></ListGroup.Item>
+            })
+    
+            setTravelHistoryInformation(data)
+        }
 
-    const getTravelInformation = async () => {
-        const customerId = sessionStorage.getItem('customerId')
-        const res = await axios.get(`http://localhost:3001/customer/getCompletedCustomerFlights/${customerId}`)
-        console.log(res)
-    }
+        getTravelInformation()
+    }, [])
+
+    
 
 
     return (
-        <h1>Travel History</h1>
+        <ListGroup style={{marginLeft:'10px', marginRight:'10px', marginBottom:'10px'}}>
+                {travelHistoryInformation.length > 0 ? travelHistoryInformation : <h3>No Travel History</h3>}
+        </ListGroup>
     )
 }
 
