@@ -108,7 +108,7 @@ Shravan Vallaban <br>
    
    *  Error handling in REST is easier when compared to GraphQL. RESTful APIs follow the HTTP spec with regards to resources and returns various HTTP statues for various API request states. GraphQL, on the other hand, returns the 200 Ok status for every API request, including for errors. This makes it difficult to manage errors and makes it hard to integrate with monitoring tools.
 
-  * Depending on how you choose to write or generate your schemas, static schemas could become a problem when you have a changing data model because the response the clients are going to get depends on the schema definition and the query they make
+  *    Depending on how you choose to write or generate your schemas, static schemas could become a problem when you have a changing data model because the response the clients are going to get depends on the schema definition and the query they make
 
 
 # Application Screenshots:
