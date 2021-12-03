@@ -20,15 +20,12 @@ router.put(
     }
     var currTime = new Date();
     console.log("the current time is ", currTime);
-    console.log(req.params.flightID);
-    console.log(req.query.price);
-    console.log(req.query.mileagePoints);
     var parameters = {};
-    if (req.query.price !== undefined) {
-      parameters["price"] = req.query.price;
+    if (req.body.price !== undefined) {
+      parameters["price"] = req.body.price;
     }
-    if (req.query.mileagePoints !== undefined) {
-      parameters["mileagePoints"] = req.query.mileagePoints;
+    if (req.body.mileagePoints !== undefined) {
+      parameters["mileagePoints"] = req.body.mileagePoints;
     }
     console.log(parameters);
     const flightExists = await Flight.findById(
