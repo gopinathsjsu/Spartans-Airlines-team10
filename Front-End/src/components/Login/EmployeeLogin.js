@@ -26,15 +26,6 @@ const EmployeeLogin = () => {
 
     const onLogin = (data) => {
         sessionStorage.setItem('employeeId', data._id)
-
-        dispatch(mainSliceActions.setFirstName(data.firstName))
-        dispatch(mainSliceActions.setLastName(data.lastName))
-        dispatch(mainSliceActions.setEmail(data.emailID))
-        dispatch(mainSliceActions.setAddress(data.address))
-        dispatch(mainSliceActions.setPhoneNumber(data.phoneNum))
-        dispatch(mainSliceActions.setGender(data.gender))
-        dispatch(mainSliceActions.setDob(data.dob))
-        dispatch(mainSliceActions.setPassword(''))
     }
 
     const handleLogin = (event) => {
@@ -50,7 +41,7 @@ const EmployeeLogin = () => {
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:3001/employee/login', data)
             .then((response) => {
-                onLogin(response.data)
+                onLogin(response.data.response)
                 setRedirectFlag(true)
             })
             .catch((e) => {

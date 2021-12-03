@@ -12,6 +12,7 @@ function LandingPage() {
   return (
     <div className="App">
       {sessionStorage.getItem('customerId') && cookie.load('cookie') ? <Redirect to='/customerdashboard' /> : null}
+      {sessionStorage.getItem('employeeId') && cookie.load('cookie') ? <Redirect to='/employeedashboard' /> : null}
       <Navigationbar />
       <div className="container">
         <div className="description">
