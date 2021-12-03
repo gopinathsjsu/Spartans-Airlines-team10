@@ -115,7 +115,7 @@ Shravan Vallaban <br>
    
 ### ***Employee/Admin***
    __Login__
-      While the registration of an Admin is done using an Backend API which is not exposed in the User Interface, the Admin can login to the Reservation system using the employeeLogin API.
+      While the registration of an Admin is done using a backend API which is not exposed in the User Interface, the Admin can login to the Reservation system using the employeeLogin API.
 
    __Add Flights__
       An admin can add a flight to the booking system using the addFlights API which is one of the core functionalities of the Admin
