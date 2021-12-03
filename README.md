@@ -158,6 +158,13 @@ Shravan Vallaban <br>
 
 # AWS Load Balancers Screenshots:
 
+![image](https://user-images.githubusercontent.com/77031080/144661860-f316dc50-8a50-4e08-94aa-7b4499eb40a1.png)
+
+
+
+![image](https://user-images.githubusercontent.com/77031080/144661775-2c7d8200-f67d-4ff4-b278-9600be8b82a7.png)
+
+
 # GitHub Repo Link:
 
 https://github.com/gopinathsjsu/Spartans-Airlines-team10
