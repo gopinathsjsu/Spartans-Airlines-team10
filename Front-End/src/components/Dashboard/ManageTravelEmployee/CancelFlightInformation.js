@@ -17,7 +17,7 @@ const CancelFlightInformation = (props) => {
 
     const flightID = props.individualData._id
 
-    const handleCancelFlight = async () => {
+    const handleDeleteFlight = async () => {
         axios.defaults.withCredentials = true;
         axios.delete(`http://localhost:3001/employee/cancelFlight/${flightID}`)
             .then((response) => {
@@ -77,7 +77,7 @@ const CancelFlightInformation = (props) => {
             </Row>
             <Row>
                 <Col style={{ textAlign: 'center' }}></Col>
-                <Col style={{ textAlign: 'right' }}><Button id="paybutton" onClick={handleCancelFlight}>Cancel</Button></Col>
+                <Col style={{ textAlign: 'right' }}><Button id="paybutton" onClick={handleDeleteFlight}>Cancel</Button></Col>
             </Row>
         </div>
     )

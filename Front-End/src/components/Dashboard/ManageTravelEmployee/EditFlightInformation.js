@@ -1,6 +1,7 @@
 import {
     Col, Row,
 } from 'react-bootstrap';
+import EditFlightModal from './EditFlightModal'
 
 const EditFlightInformation = (props) => {
     const departureDate = new Date(props.individualData.departureDate)
@@ -29,7 +30,7 @@ const EditFlightInformation = (props) => {
             </Row>
             <Row>
                 <Col style={{ textAlign: 'center' }}></Col>
-                <Col style={{ textAlign: 'right' }}></Col>
+                <Col style={{ textAlign: 'right' }}><EditFlightModal individualData={props.individualData} /></Col>
             </Row>
         </div>
     )
