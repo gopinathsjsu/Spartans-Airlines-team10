@@ -58,7 +58,11 @@ router.delete(
         console.log(error);
         res.statusCode = 404;
         res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({ message: "Error occurred since the flight may have been deleted" }));
+        res.end(
+          JSON.stringify({
+            message: "Error occurred since the flight may have been deleted",
+          })
+        );
       }
     } else {
       res.statusCode = 404;
@@ -72,9 +76,10 @@ async function doesFlightHaveActiveReservations(flightID) {
   try {
     const reservation = await Reservations.find({
       flightID: new mongodb.ObjectId(flightID),
+      status: "upcoming",
     });
     console.log("the reservation is", reservation);
-    if (reservation.length===0) {
+    if (reservation.length === 0) {
       return false;
     } else {
       return true;
