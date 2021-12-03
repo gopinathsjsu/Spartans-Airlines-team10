@@ -3,7 +3,6 @@ const router = express.Router();
 const Flight = require("../../Models/FlightsModel.js");
 const mongoose = require("mongoose");
 const { body, validationResult } = require("express-validator");
-const cookieParser = require("cookie-parser");
 
 router.post(
   "/",
