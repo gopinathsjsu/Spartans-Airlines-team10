@@ -13,7 +13,7 @@ const EditFlightModal = (props) => {
     const [editedFlag, setEditedFlag] = useState(false)
     const [redirectPage, setRedirectPage] = useState(null)
 
-    const flightNumber = props.individualData._id
+    const flightID = props.individualData._id
 
     const onChangePrice = (e) => {
         setPrice(e.target.value)
@@ -29,9 +29,8 @@ const EditFlightModal = (props) => {
 
     const handleEditFlightPrice = async (event) => {
         event.preventDefault()
-
         axios.defaults.withCredentials = true;
-        axios.put(`http://localhost:3001/employee/editFlight/${flightNumber}/${price}`)
+        axios.put(`http://localhost:3001/employee/editFlight/${flightID}`, { price } )
             .then((response) => {
                 console.log(response)
                 setEditedFlag(true)
@@ -42,9 +41,9 @@ const EditFlightModal = (props) => {
 
     const handleEditFlightMileagePoints = async (event) => {
         event.preventDefault()
-        
+
         axios.defaults.withCredentials = true;
-        axios.put(`http://localhost:3001/employee/editFlight/${flightNumber}/${mileagePoints}`)
+        axios.put(`http://localhost:3001/employee/editFlight/${flightID}`, { mileagePoints } )
             .then((response) => {
                 console.log(response)
                 setEditedFlag(true)

@@ -29,6 +29,9 @@ const EditFlightInformation = (props) => {
                 <Col>Price: {props.individualData.price}</Col>
             </Row>
             <Row>
+                <Col>Mileage Points: {props.individualData.mileagePoints}</Col>
+            </Row>
+            <Row>
                 <Col style={{ textAlign: 'center' }}></Col>
                 <Col style={{ textAlign: 'right' }}><EditFlightModal individualData={props.individualData} /></Col>
             </Row>
