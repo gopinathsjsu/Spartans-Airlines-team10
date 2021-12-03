@@ -114,12 +114,44 @@ Shravan Vallaban <br>
 # Feature Set
    
 ### ***Employee/Admin***
-      ***Login***
-         While the registration of an Admin is done using an Backend API which is not exposed in the User Interface, the Admin can login to the Reservation system using the employeeLogin API.
-      ***Add Flights***
-         The admin can add a flight to the booking system using the addFlights API which is one 
-### ***Customer*** 
+   __Login__
+      While the registration of an Admin is done using a backend API which is not exposed in the User Interface, the Admin can login to the Reservation system using the employeeLogin API.
 
+   __Add Flights__
+      An admin can add a flight to the booking system using the addFlights API which is one of the core functionalities of the Admin
+   
+   __Cancel Flight__
+      An admin can also cancel any flight if the flight has no active reservations using the cancelFlight API
+
+   __Edit Flight__
+      An admin can edit the price and the mileage points associated with a particular flight using the editFlight API
+### ***Customer*** 
+   __Sign up__
+      A customer can register themselves into the Spartan Airlines portal which is enbled by the signup API associated with actor customer
+   
+   __Login__
+      If a customer has an account with the portal they can login to the portal and view their dashboard using the login API
+
+   __Search Flight__
+      If a customer has a active session with the portal they can search for flights using the searchFlights API which will give the list all the flights in which they can make a reservation
+
+   __Make Reservation__
+      A customer make reservations for multiple passengers in a single reservation made possible by the reservation API
+
+   __Change Seat__
+      If a customer has a active reservation they change their existing seat from the list of available seats from the same website using changeSeat API
+   
+   __Cancel Booking__
+      A customer can also cancel the active reservation using the cancelReservation API which will release all the seats that were held by the passengers of that reservation
+   
+   __View Booking History__
+      A customer can also change view all the reservations they have made using their account with getAllReservations API
+
+   __Edit Profile__
+      A customer can also edit the contents of the their profile which has been done using the PUT API for the profile endpoint
+
+   __View Profile Details__
+      A customer can view their profile details on the profile page which has been done with the help of a GET API on the profile endpoint.
 
 
 # Application Screenshots:
