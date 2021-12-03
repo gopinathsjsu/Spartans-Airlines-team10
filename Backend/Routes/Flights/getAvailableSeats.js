@@ -53,36 +53,7 @@ const doesFlightExist = async (flightID) => {
   } else {
     return false;
   }
-  // try {
-  //   let data = await Flights.findById(new mongodb.ObjectId(flightID)).orFail();
-  //   return data;
-  // } catch (err) {
-  //   console.log(err);
-  //   throw err;
-  // }
 
-  // if(!data){
-  //   console.log("no")
-  // }
-  // Flights.findById(new mongodb.ObjectId(flightID), (error, result){
-  //   if(result){
-  //     return true
-  //   }else{
-  //     return false;
-  //   }
-  // })
-
-  // try {
-  //   const flights = await Flights.findById(new mongodb.ObjectId(flightID));
-  //   if (flights.length != 0) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // } catch (err) {
-  //   console.log("There is an error", err);
-  //   throw err;
-  // }
 };
 
 const findAvailableSeats = async (flightID) => {
