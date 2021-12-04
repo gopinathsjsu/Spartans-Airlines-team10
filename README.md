@@ -132,19 +132,26 @@ Shravan Vallaban <br>
 
    * We are also adding the EC2 instances for the load balancer to handle the traffic and re route them to those instances.
 
-* ***AWS and Google Cloud Platform***
+* ***Application Hosting on AWS***
    * We have hosted the entire application on AWS with Node and React servers being deployed in different EC2 instances.platforms. 
 
    * The configuration for the EC2 instance we had used for hosting the node server is 
+
       __OS__ Amazon Machine Image Ubuntu 18.04 
+   
       __RAM__ 1 GB
+   
       __vCPUs__ 1
+   
       __ROM__ Elastic Block Store
    
    * EC2 configuration of the React Server
       __OS__ Amazon Machine Image Ubuntu 18.04 
+
       __RAM__ 1 GB
+      
       __vCPUs__ 1
+      
       __ROM__ Elastic Block Store
 
 # Feature Set
