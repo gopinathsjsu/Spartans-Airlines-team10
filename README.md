@@ -55,7 +55,7 @@ Shravan Vallaban <br>
 
 # Deployment Diagram:
 
-![Deployment Diagram](https://user-images.githubusercontent.com/23494069/144701154-d281cc5b-d5f0-484a-8215-5435214d3694.png)
+![Deployment Diagram](https://user-images.githubusercontent.com/23494069/144701112-95b6c2ed-b18e-4996-9902-fcfbee2070c6.png)
 
 # Design Decisions:
 
@@ -230,11 +230,15 @@ https://github.com/gopinathsjsu/Spartans-Airlines-team10
 Wednesday  <br>
 Friday
 
-# Weekly Scrum Report:
+# Weekly Scrum Report & Burndown charts:
+
+https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Weekly%20Scrum%20Report.xlsx
 
 # Project Dashboard:
 
-# Task Sheet & Burndown charts:
+# Sprint Journal:
+
+https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Sprint%20Journal.xlsx
 
 # Areas of contribution:
 * We divided our work as two categories, Frontend and Backend application development:
