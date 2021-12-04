@@ -55,6 +55,8 @@ Shravan Vallaban <br>
 
 # Deployment Diagram:
 
+![Deployment Diagram](https://user-images.githubusercontent.com/23494069/144701154-d281cc5b-d5f0-484a-8215-5435214d3694.png)
+
 # Design Decisions:
 
 * ***Database : Why NoSQL?*** 
