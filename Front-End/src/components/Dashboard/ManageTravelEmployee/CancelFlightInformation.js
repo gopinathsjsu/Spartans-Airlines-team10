@@ -19,7 +19,7 @@ const CancelFlightInformation = (props) => {
 
     const handleDeleteFlight = async () => {
         axios.defaults.withCredentials = true;
-        axios.delete(`http://localhost:3001/employee/cancelFlight/${flightID}`)
+        axios.delete(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/cancelFlight/${flightID}`)
             .then((response) => {
                 if (response.data.message === "flight deleted") {
                     setDeletedFlag(true)

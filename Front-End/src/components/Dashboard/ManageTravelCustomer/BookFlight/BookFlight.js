@@ -44,7 +44,7 @@ const BookFlight = () => {
         }
         
         try {
-            const res = await axios.get(`http://localhost:3001/flights`, { params: { originCode, destinationCode, departureDate, numOfSeats } })
+            const res = await axios.get(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/flights`, { params: { originCode, destinationCode, departureDate, numOfSeats } })
             dispatch(searchFlightActions.setAvailableFlights(res.data))
         } catch {
             setErrorFlag(true)

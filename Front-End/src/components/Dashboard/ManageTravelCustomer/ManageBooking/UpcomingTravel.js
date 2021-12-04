@@ -9,7 +9,7 @@ const UpcomingTravel = () => {
     useEffect(() => {
         const getTravelInformation = async () => {
             const customerId = sessionStorage.getItem('customerId')
-            const res = await axios.get(`http://localhost:3001/customer/getUpcomingCustomerFlights/${customerId}`)
+            const res = await axios.get(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/customer/getUpcomingCustomerFlights/${customerId}`)
             const upcomingTravel = res.data.response
     
             const data = upcomingTravel.map((individualData) => {

@@ -20,7 +20,7 @@ const UpdateTravel = (props) => {
     const handleClose = () => setShow(false);
 
     const handleShow = async () => {
-        const res = await axios.get(`http://localhost:3001/flights/getAvailableSeats/${props.individualData.flightID}`)
+        const res = await axios.get(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/flights/getAvailableSeats/${props.individualData.flightID}`)
         setAvailableSeats(res.data.message[0].seats)
         setShow(true);
     }
@@ -33,7 +33,7 @@ const UpdateTravel = (props) => {
         }
 
         axios.defaults.withCredentials = true;
-        axios.put('http://localhost:3001/reservations/cancelReservation', data)
+        axios.put('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/reservations/cancelReservation', data)
             .then((response) => {
                 setCancelFlag(true)
             })
