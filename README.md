@@ -133,7 +133,7 @@ Shravan Vallaban <br>
    * We are also adding the EC2 instances for the load balancer to handle the traffic and re route them to those instances.
 
 * ***AWS and Google Cloud Platform***
-   * Although the entire application can be hosted on just one cloud platform we chose to deploy the react server on a compute engine in Google Cloud Platform and the backend node server on AWS EC2 instance to test the working on an application deployed on different platforms. 
+   * We have hosted the entire application on AWS with Node and React servers being deployed in different EC2 instances.platforms. 
 
    * The configuration for the EC2 instance we had used for hosting the node server is 
       __OS__ Amazon Machine Image Ubuntu 18.04 
@@ -141,11 +141,11 @@ Shravan Vallaban <br>
       __vCPUs__ 1
       __ROM__ Elastic Block Store
    
-   * We have also deployed the react server on a compute engine the configuration of which are
-      __OS__   Ubtuntu 20.04
-      __RAM__ 0.5 - 8 GB
-      __vCPU__ 2-32
-      __Processor__ Skylake
+   * EC2 configuration of the React Server
+      __OS__ Amazon Machine Image Ubuntu 18.04 
+      __RAM__ 1 GB
+      __vCPUs__ 1
+      __ROM__ Elastic Block Store
 
 # Feature Set
    
@@ -216,6 +216,7 @@ __View Profile Details__
 ![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/5.png?token=AEI43ZLFO2DJAVN734JSJE3BWTJUK)
 
 ![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/6.png?token=AEI43ZMTPYQBJUVLTUIQSNTBWTJXW)
+
 
 
 # AWS Load Balancers Screenshots:
