@@ -30,7 +30,7 @@ const EditFlightModal = (props) => {
     const handleEditFlightPrice = async (event) => {
         event.preventDefault()
         axios.defaults.withCredentials = true;
-        axios.put(`http://localhost:3001/employee/editFlight/${flightID}`, { price } )
+        axios.put(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/editFlight/${flightID}`, { price } )
             .then((response) => {
                 console.log(response)
                 setEditedFlag(true)
@@ -43,7 +43,7 @@ const EditFlightModal = (props) => {
         event.preventDefault()
 
         axios.defaults.withCredentials = true;
-        axios.put(`http://localhost:3001/employee/editFlight/${flightID}`, { mileagePoints } )
+        axios.put(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/editFlight/${flightID}`, { mileagePoints } )
             .then((response) => {
                 console.log(response)
                 setEditedFlag(true)

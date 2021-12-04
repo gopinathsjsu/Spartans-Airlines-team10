@@ -47,7 +47,7 @@ const CustomerLogin = () => {
             password
         }
         axios.defaults.withCredentials = true;
-        axios.post('http://localhost:3001/login', data)
+        axios.post('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/login', data)
             .then((response) => {
                 onLogin(response.data)
                 setRedirectFlag(true)
