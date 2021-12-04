@@ -15,7 +15,7 @@ const EditFlight = () => {
     useEffect(() => {
         const getAllFlightInformation = async () => {
             const employeeID = sessionStorage.getItem('employeeId')
-            const res = await axios.get(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/getUpcomingFlights/${employeeID}`)
+            const res = await axios.get(`http://18.144.101.175:3001/employee/getUpcomingFlights/${employeeID}`)
             const allFlights = res.data.response
 
             console.log(allFlights)

@@ -150,7 +150,7 @@ const AddFlight = () => {
         }
 		axios.defaults.withCredentials = true;
         console.log(data)     
-        axios.post('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/addFlight', data)
+        axios.post('http://18.144.101.175:3001/employee/addFlight', data)
             .then((response) => {
                 console.log(response.headers)
                 onAddFlight(response.data)

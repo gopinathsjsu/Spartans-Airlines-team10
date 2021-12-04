@@ -39,7 +39,7 @@ const EmployeeLogin = () => {
         console.log(data)
 
         axios.defaults.withCredentials = true;
-        axios.post('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/employee/login', data)
+        axios.post('http://18.144.101.175:3001/employee/login', data)
             .then((response) => {
                 onLogin(response.data.response)
                 setRedirectFlag(true)
