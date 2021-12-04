@@ -1,12 +1,8 @@
 import {
-    Form, Button, Container, Col, Row, Figure
+    Form, Button, Container, Col, Row
 } from 'react-bootstrap';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import DatePicker from "react-datepicker";
-import Navigationbar from '../../Navigationbar/Navigationbar';
-import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { mainSliceActions } from '../../../store/mainSlice';
 import './AddFlight.css';
@@ -92,26 +88,14 @@ const AddFlight = () => {
     const onChangeCapacity = (e) => { 
         dispatch(mainSliceActions.setCapacity(e.target.value)) 			
     }	
-    const onChangeSeatsLeft = (e) => { 
-        dispatch(mainSliceActions.setSeatsLeft(e.target.value)) 		
-    }	
     const onChangeTravelDistance  = (e) => {
         dispatch(mainSliceActions.setTravelDistance(e.target.value)) 	
-    }	
-    const onChangeDuration = (e) => {
-        dispatch(mainSliceActions.setDuration(e.target.value)) 			
-    }	
+    }
     const onChangeMileagePoints  = (e) => {	
         dispatch(mainSliceActions.setMileagePoints(e.target.value)) 	
     }
-    const onChangeSeats  = (e) => {	
-            dispatch(mainSliceActions.setSeats(e.target.value)) 			
-    }
     const onChangePrice = (e) => { 	
         dispatch(mainSliceActions.setPrice(e.target.value)) 			
-    }
-    const onChangeflightid = (e) => { 	
-        dispatch(mainSliceActions.setFlightId(e.target.value)) 			
     }
     const onAddFlight = (data) => {
         dispatch(mainSliceActions.setFlightNumber(data.flightNumber))
