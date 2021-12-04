@@ -2,7 +2,6 @@ import Navigationbar from '../Navigationbar/Navigationbar'
 import {
   Container, Row, Col, Figure,
 } from 'react-bootstrap';
-import cookie from 'react-cookies';
 import { Redirect } from 'react-router-dom';
 import './Landingpage.css'
 
@@ -11,8 +10,8 @@ function LandingPage() {
   
   return (
     <div className="App">
-      {sessionStorage.getItem('customerId') && cookie.load('cookie') ? <Redirect to='/customerdashboard' /> : null}
-      {sessionStorage.getItem('employeeId') && cookie.load('cookie') ? <Redirect to='/employeedashboard' /> : null}
+      {sessionStorage.getItem('customerId') ? <Redirect to='/customerdashboard' /> : null}
+      {sessionStorage.getItem('employeeId') ? <Redirect to='/employeedashboard' /> : null}
       <Navigationbar />
       <div className="container">
         <div className="description">

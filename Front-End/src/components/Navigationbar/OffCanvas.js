@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Offcanvas, Button, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import cookie from 'react-cookies';
 import './OffCanvas.css'
 
 const OffCanvas = () => {
@@ -11,7 +10,6 @@ const OffCanvas = () => {
     const handleShow = () => setShow(true);
 
     const handleLogout = () => {
-        cookie.remove('cookie', { path: '/' })
         sessionStorage.removeItem('customerId')
         sessionStorage.removeItem('employeeId')
     }
