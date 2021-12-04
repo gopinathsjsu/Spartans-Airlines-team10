@@ -205,6 +205,17 @@ __View Profile Details__
 
 # Application Screenshots:
 
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/1.png?token=AEI43ZJN2LTSYISVOXUFEVLBWTJFO)
+
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/2.png?token=AEI43ZOEGAXLEN2OAHCVSU3BWTJOA)
+
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/3.png?token=AEI43ZLKHTBLC2K6STT2VXTBWTJPY)
+
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/4.png?token=AEI43ZLARYRD34K6IH6YDUDBWTJSI)
+
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/5.png?token=AEI43ZLFO2DJAVN734JSJE3BWTJUK)
+
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/6.png?token=AEI43ZMTPYQBJUVLTUIQSNTBWTJXW)
 
 
 # AWS Load Balancers Screenshots:
