@@ -1,21 +1,20 @@
 import {
     Form, Button, Container, Col, Row,
 } from 'react-bootstrap';
-import cookie from 'react-cookies';
+// import cookie from 'react-cookies';
 import Navigationbar from '../Navigationbar/Navigationbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { mainSliceActions } from '../../store/mainSlice'
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import DatePicker from "react-datepicker";
-import { Redirect } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import './ProfilePage.css'
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
 
-    const loadedCookie = cookie.load('cookie')
+    // const loadedCookie = cookie.load('cookie')
 
     const firstName = useSelector(state => state.mainSlice.firstname)
     const lastName = useSelector(state => state.mainSlice.lastname)
@@ -97,7 +96,6 @@ const ProfilePage = () => {
 
     return (
         <div>
-            {!loadedCookie ? <Redirect to="/" /> : null}
             <Toaster />
             <Navigationbar />
             <div className="container">

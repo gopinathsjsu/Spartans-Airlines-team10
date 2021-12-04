@@ -35,7 +35,6 @@ const AddFlight = () => {
     const capacity = useSelector(state => state.mainSlice.capacity)
     const mileagePoints = useSelector(state => state.mainSlice.mileagepoints)
     const travelDistance = useSelector(state => state.mainSlice.traveldistance)
-    const flightid = useSelector(state => state.mainSlice.flightid)	
 
     const onChangeFlightNumber = (e) => { 
         dispatch(mainSliceActions.setFlightNumber(e.target.value)) 		
@@ -104,16 +103,16 @@ const AddFlight = () => {
         dispatch(mainSliceActions.setOriginCode(data.originCode)) 			
         dispatch(mainSliceActions.setDestination(data.destination)) 		
         dispatch(mainSliceActions.setDestinationCode(data.destinationCode)) 	
-        dispatch(mainSliceActions.depDate(parseInt(data.depDate)))
-		dispatch(mainSliceActions.depMonth(parseInt(data.depMonth)))
-		dispatch(mainSliceActions.arrDate(parseInt(data.arrDate)))
-		dispatch(mainSliceActions.arrMonth(parseInt(data.arrMonth)))
-		dispatch(mainSliceActions.depYear(parseInt(data.depYear)))
-		dispatch(mainSliceActions.depHrs(parseInt(data.depHrs)))
-		dispatch(mainSliceActions.depMins(parseInt(data.depMins)))
-		dispatch(mainSliceActions.arrHrs(parseInt(data.arrHrs)))
-		dispatch(mainSliceActions.arrMins(parseInt(data.arrMins)))
-		dispatch(mainSliceActions.arrYear(parseInt(data.arrYear)))        
+        dispatch(mainSliceActions.setdepDate(parseInt(data.depDate)))
+		dispatch(mainSliceActions.setdepMonth(parseInt(data.depMonth)))
+		dispatch(mainSliceActions.setarrDate(parseInt(data.arrDate)))
+		dispatch(mainSliceActions.setarrMonth(parseInt(data.arrMonth)))
+		dispatch(mainSliceActions.setdepYear(parseInt(data.depYear)))
+		dispatch(mainSliceActions.setdepHrs(parseInt(data.depHrs)))
+		dispatch(mainSliceActions.setdepMins(parseInt(data.depMins)))
+		dispatch(mainSliceActions.setarrHrs(parseInt(data.arrHrs)))
+		dispatch(mainSliceActions.setarrMins(parseInt(data.arrMins)))
+		dispatch(mainSliceActions.setarrYear(parseInt(data.arrYear)))        
         dispatch(mainSliceActions.setPrice(parseInt(data.price)) )
         dispatch(mainSliceActions.setCapacity(parseInt(data.capacity))) 			
         dispatch(mainSliceActions.setMileagePoints(parseInt(data.mileagePoints))) 
@@ -146,7 +145,6 @@ const AddFlight = () => {
             capacity 		,	
             mileagePoints 	,
             travelDistance 	,
-            flightid,
         }
 		axios.defaults.withCredentials = true;
         console.log(data)     
@@ -154,7 +152,6 @@ const AddFlight = () => {
             .then((response) => {
                 console.log(response.headers)
                 onAddFlight(response.data)
-                printStatus(response)
             })
             .catch((err) => {
                 console.log("Printing error")
@@ -162,7 +159,6 @@ const AddFlight = () => {
                 invalidAddFlight()
             })
     }
-	const printStatus=(response)=>toast.error(response.data.message)
 	const invalidAddFlight = () => toast.error('Flight Already Exists or Invalid Input')
 	
     return (

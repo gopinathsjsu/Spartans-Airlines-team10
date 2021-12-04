@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 import './Navigationbar.css'
 import {
@@ -11,15 +10,13 @@ class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadedCookie: cookie.load('cookie'),
             show: false,
         }
     }
 
     render() {
         let navLogin = null
-        const loadedCookie = this.state
-        if (loadedCookie.loadedCookie) {
+        if (sessionStorage.getItem('customerId') || sessionStorage.getItem('employeeId')) {
             navLogin = (
                 <Nav className="ml-auto">
                     <OffCanvas />

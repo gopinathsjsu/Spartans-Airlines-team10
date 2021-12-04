@@ -6,14 +6,14 @@ import { searchFlightActions } from '../../../../store/searchFlightSlice'
 import { bookFlightActions } from '../../../../store/bookFlightSlice'
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
-import cookie from 'react-cookies';
-import { Redirect } from 'react-router-dom';
+// import cookie from 'react-cookies';
+// import { Redirect } from 'react-router-dom';
 
 const BookFlight = () => {
     const dispatch = useDispatch()
     const [errorFlag, setErrorFlag] = useState(false)
 
-    const loadedCookie = cookie.load('cookie')
+    // const loadedCookie = cookie.load('cookie')
 
     const originCode = useSelector(state => state.searchFlightSlice.departureLocation)
     const destinationCode = useSelector(state => state.searchFlightSlice.arrivalLocation)
@@ -55,7 +55,6 @@ const BookFlight = () => {
 
     return (
         <div>
-            {!loadedCookie ? <Redirect to="/" /> : null}
             <Toaster />
             <Navigationbar />
             {errorFlag && <h1>Flights Not Found</h1>}
