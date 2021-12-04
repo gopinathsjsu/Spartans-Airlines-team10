@@ -81,7 +81,7 @@ const ProfilePage = () => {
         }
 
         axios.defaults.withCredentials = true;
-        axios.put('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/profile', data)
+        axios.put('http://18.144.101.175:3001/profile', data)
             .then((response) => {
                 // onProfile(response.data)
                 validProfile()

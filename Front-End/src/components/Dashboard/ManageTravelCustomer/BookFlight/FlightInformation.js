@@ -18,7 +18,7 @@ const FlightInformation = (props) => {
         dispatch(bookFlightActions.setPassengerList(numberOfPassengers))
         dispatch(bookFlightActions.resetPassengerCount())
 
-        const res = await axios.get(`http://airline-931057547.us-west-1.elb.amazonaws.com:3001/flights/getAvailableSeats/${flightID}`)
+        const res = await axios.get(`http://18.144.101.175:3001/flights/getAvailableSeats/${flightID}`)
         dispatch(bookFlightActions.setAvailableSeats(res.data.message[0].seats))
     }
 

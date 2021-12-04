@@ -43,7 +43,7 @@ const MileagePointsPayment = (props) => {
         console.log(data)
 
         axios.defaults.withCredentials = true;
-        axios.post('http://airline-931057547.us-west-1.elb.amazonaws.com:3001/reservations', data)
+        axios.post('http://18.144.101.175:3001/reservations', data)
             .then((response) => {
                 setPaymentFlag(true)
             })
