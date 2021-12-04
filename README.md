@@ -236,6 +236,9 @@ https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Wee
 
 # Project Dashboard:
 
+![image](https://user-images.githubusercontent.com/77031080/144716412-1751eada-c2b3-4da5-8321-19045fa0be03.png)
+
+
 # Sprint Journal:
 
 https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Sprint%20Journal.xlsx
