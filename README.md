@@ -230,11 +230,15 @@ https://github.com/gopinathsjsu/Spartans-Airlines-team10
 Wednesday  <br>
 Friday
 
-# Weekly Scrum Report:
+# Weekly Scrum Report & Burndown charts:
+
+https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Weekly%20Scrum%20Report.xlsx
 
 # Project Dashboard:
 
-# Task Sheet & Burndown charts:
+# Sprint Journal:
+
+https://github.com/gopinathsjsu/Spartans-Airlines-team10/blob/main/Documents/Sprint%20Journal.xlsx
 
 # Areas of contribution:
 * We divided our work as two categories, Frontend and Backend application development:
