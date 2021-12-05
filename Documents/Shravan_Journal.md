@@ -8,7 +8,6 @@
     What tasks are blocked waiting on another team member?	
         None
 
-
 # Sprint 2	
     What task did I work on/complete?
     	Revised the system architecture and started the Back End Development, plan user stories for the team
@@ -19,7 +18,6 @@
     What tasks are blocked waiting on another team member?
     	None
 
-
 # Sprint 3	
     What task did I work on/complete?
     	Login and Signup APIs for Airline Employee, Involved in DB design, 
@@ -29,7 +27,6 @@
 	
     What tasks are blocked waiting on another team member?
     	None
-
 
 # Sprint 4
 	What task did I work on/complete?
@@ -42,7 +39,6 @@
     What tasks are blocked waiting on another team member?
     	None
 
-
 # Sprint 5	
     What task did I work on/complete?
     	Get Available Seats, Get Upcoming flight for employee, functional testing of the APIs done so far.
@@ -52,7 +48,6 @@
 	
     What tasks are blocked waiting on another team member?
     	None
-
 
 # Sprint 6	
     What task did I work on/complete?
