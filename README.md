@@ -232,7 +232,7 @@ __View Profile Details__
 
 ![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/9.jpg?token=AEI43ZKPBMAO2CJDJQGN5QLBWTR7M)
 
-
+![image](https://raw.githubusercontent.com/gopinathsjsu/Spartans-Airlines-team10/main/Documents/12.png?token=AEI43ZNN52KYPQWUQT543ZTBWT4ZK)
 
 # AWS Load Balancers Screenshots:
 
